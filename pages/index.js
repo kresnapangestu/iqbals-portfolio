@@ -8,7 +8,7 @@ import Hero from "./containers/Hero";
 import About from "./containers/About";
 import Works from "./containers/Works";
 import Projects from "./containers/Projects";
-import Floating from "./components/organisms/Floating";
+import Floating from "./components/Organisms/Floating";
 import Footer from "./containers/Footer";
 import Cursor from "./components/Atoms/Cursor";
 import { useEffect, useRef, useState } from "react";
