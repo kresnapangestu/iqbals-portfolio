@@ -11,7 +11,8 @@ import Projects from "./containers/Projects";
 import Floating from "./components/Organisms/Floating";
 import Footer from "./containers/Footer";
 import Cursor from "./components/Atoms/Cursor";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { createTheme, ThemeProvider } from "@mui/material";
 
 const dmsans = DM_Sans({
   weight: "400",
@@ -33,7 +34,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div>
       <div className={dmsans.className}>
         <Head>
           <title>Pangestu</title>
@@ -44,7 +45,7 @@ export default function Home() {
           <link rel="icon" type="image/png" href="/favicon.webp" />
         </Head>
 
-        <Grid style={{ display: "flex", flexDirection: "column" }}>
+        <div className={styles.container}>
           {pageLoading ? (
             <Splash className={fade === true ? `fadeIn` : `fadeOut`} />
           ) : (
@@ -52,24 +53,25 @@ export default function Home() {
               <Cursor />
               <Navbar />
               <Floating />
-              <Grid className={styles.content}>
-                <Grid id="hero">
+
+              <div className={styles.content}>
+                <div id="hero">
                   <Hero />
-                </Grid>
-                <Grid id="about">
+                </div>
+                <div id="about">
                   <About />
-                </Grid>
-                <Grid id="works">
+                </div>
+                <div id="works">
                   <Works />
-                </Grid>
-                <Grid id="project">
+                </div>
+                <div id="project">
                   <Projects />
-                </Grid>
-              </Grid>
+                </div>
+              </div>
               <Footer />
             </div>
           )}
-        </Grid>
+        </div>
       </div>
     </div>
   );
