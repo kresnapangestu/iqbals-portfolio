@@ -48,7 +48,10 @@ export default function Home() {
           {pageLoading ? (
             <Splash className={fade === true ? `fadeIn` : `fadeOut`} />
           ) : (
-            <div className={fade === false && `fadeIn`}>
+            <div
+              className={fade === false && `fadeIn`}
+              style={{ display: "flex", flexDirection: "column" }}
+            >
               <Cursor />
               <Navbar />
               <Floating />
