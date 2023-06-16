@@ -13,7 +13,7 @@ import Image from "next/image";
 
 import { Code, Launch } from "@mui/icons-material";
 
-import { ProjectList } from "../text";
+import { ProjectList } from "../../public/text";
 
 const dmsans_bold = DM_Sans({
   weight: "700",
