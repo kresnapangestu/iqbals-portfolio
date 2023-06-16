@@ -44,14 +44,11 @@ export default function Home() {
           <link rel="icon" type="image/png" href="/favicon.webp" />
         </Head>
 
-        <Grid>
+        <Grid style={{ display: "flex", flexDirection: "column" }}>
           {pageLoading ? (
             <Splash className={fade === true ? `fadeIn` : `fadeOut`} />
           ) : (
-            <div
-              className={fade === false && `fadeIn`}
-              style={{ display: "flex", flexDirection: "column" }}
-            >
+            <div className={fade === false && `fadeIn`}>
               <Cursor />
               <Navbar />
               <Floating />
