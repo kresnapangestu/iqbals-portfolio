@@ -42,6 +42,7 @@ export default function Floating() {
               width={30}
               height={30}
               alt="Logo Instagram"
+              loading="eager"
               style={{
                 position: "absolute",
               }}
@@ -60,6 +61,7 @@ export default function Floating() {
               src="/images/linkedin.webp"
               width={30}
               height={30}
+              loading="eager"
               alt="Logo linkedin"
               style={{
                 position: "absolute",
@@ -80,6 +82,7 @@ export default function Floating() {
               width={30}
               height={30}
               alt="Logo Github"
+              loading="eager"
               style={{
                 position: "absolute",
               }}
@@ -124,6 +127,7 @@ export default function Floating() {
           width={80}
           height={80}
           alt="Logo Floating"
+          loading="eager"
           style={{
             margin: "1% 0",
             position: "absolute",
