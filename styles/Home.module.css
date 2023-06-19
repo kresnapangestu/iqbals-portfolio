@@ -199,7 +199,7 @@
 }
 
 .header_2 {
-  font-size: 30px;
+  font-size: 35px;
 }
 
 .header_3 {
@@ -215,7 +215,7 @@
 }
 @media only screen and (max-width: 600px) {
   .header_1 {
-    font-size: 35px;
+    font-size: 40px;
   }
   .header_2 {
     font-size: 25px;

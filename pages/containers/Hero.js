@@ -2,6 +2,13 @@
 import { useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
 
+import { DM_Sans } from "next/font/google";
+
+const dmsans_bold = DM_Sans({
+  weight: "500",
+  subsets: ["latin"],
+});
+
 export default function Hero(props) {
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState("");
@@ -40,7 +47,6 @@ export default function Hero(props) {
           ? "calc(100vh/11) calc(100vw/7)"
           : "calc(100vw/11) calc(100vw/7)",
         zIndex: 99,
-        fontWeight: 900,
       }}
     >
       <span className={styles.header_2}>
@@ -50,7 +56,7 @@ export default function Hero(props) {
         , My Name is
       </span>
       <br></br>
-      <span className={styles.header_1}>
+      <span className={dmsans_bold.className + " " + styles.header_1}>
         Mohammad Iqbal Kresna Pangestu. Front-end Website Developer <br></br>
         Based in Bandung.
       </span>

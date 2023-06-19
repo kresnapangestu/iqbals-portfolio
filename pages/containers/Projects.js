@@ -8,6 +8,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { DM_Sans } from "next/font/google";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
+import styles from "../../styles/Home.module.css";
 
 import { Code, Launch } from "@mui/icons-material";
 
@@ -23,12 +24,7 @@ const dmsans = DM_Sans({
   subsets: ["latin"],
 });
 
-export default function Projects() {
-  const [value, setValue] = useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+export default function Projects(props) {
   return (
     <div
       style={{
@@ -40,10 +36,8 @@ export default function Projects() {
       }}
     >
       <span
-        className={dmsans_bold.className}
+        className={dmsans_bold.className + " " + styles.header_2}
         style={{
-          fontSize: 30,
-          fontWeight: 900,
           borderRadius: "30px",
           textAlign: "center",
         }}
@@ -53,13 +47,13 @@ export default function Projects() {
       <div
         className={dmsans.className}
         style={{
-          margin: "2% 0",
+          margin: props.isMobile ? "5% 0" : "2% 0",
           textAlign: "-webkit-center",
         }}
       >
         <Carousel
           showArrows={true}
-          width="60%"
+          width={props.isMobile ? "80%" : "60%"}
           infiniteLoop="true"
           autoPlay="true"
           interval="3000"
@@ -86,15 +80,22 @@ export default function Projects() {
                 />
               </div>
               <div className={`overlay`}></div>
-              <span className={`text`}>
-                <a>{data.caption}</a>
-                <ToolsChip data={data.tools} margin="5% 2% 5% 0" />
+              <span
+                className={`text`}
+                style={{ textAlign: props.isMobile && "left" }}
+              >
+                <a className={styles.header_3}>{data.caption}</a>
+                <ToolsChip
+                  data={data.tools}
+                  margin={props.isMobile ? "5% 2% 5% 0" : "5% 2% 5% 0"}
+                  isMobile={props.isMobile}
+                />
                 {data.code && (
                   <a
                     className={dmsans_bold.className}
                     style={{
                       fontSize: 20,
-                      margin: "2%",
+                      margin: props.isMobile ? "5%" : "2%",
                     }}
                     target="_blank"
                     href={data.code}
@@ -105,10 +106,9 @@ export default function Projects() {
                 )}
                 {data.open && (
                   <a
-                    className={dmsans_bold.className}
+                    className={dmsans_bold.className + " " + styles.header_2}
                     style={{
-                      fontSize: 20,
-                      margin: "2% 2% 2% 0",
+                      margin: props.isMobile ? "10% 0 0 0" : "2% 2% 2% 0",
                     }}
                     target="_blank"
                     href={data.open}
@@ -123,10 +123,7 @@ export default function Projects() {
         </Carousel>
       </div>
       <a
-        className={dmsans_bold.className}
-        style={{
-          fontSize: 20,
-        }}
+        className={dmsans_bold.className + " " + styles.header_3}
         target="_blank"
         href="https://drive.google.com/file/d/1fYnYU6lwSHLcUPkDLKWJ3i1alzp1Xi5l/view?usp=sharing"
         rel="noopener noreferrer"
@@ -143,7 +140,8 @@ function ToolsChip(props) {
       style={{
         display: "flex",
         flexDirection: "row",
-        justifyContent: "center",
+        justifyContent: props.isMobile ? "left" : "center",
+        flexWrap: "wrap",
       }}
     >
       {props?.data?.map((data) => (
@@ -152,7 +150,7 @@ function ToolsChip(props) {
           textColor="white"
           background="black"
           borderColor="black"
-          fontSize="18px"
+          fontSize={props.isMobile ? "16px" : "18px"}
           margin={props.margin || "2% 2% 0 0"}
         />
       ))}

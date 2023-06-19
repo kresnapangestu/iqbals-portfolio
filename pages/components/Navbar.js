@@ -31,8 +31,8 @@ export default function Navbar(props) {
     >
       <Image
         src="/images/logo.png"
-        width={props.isMobile ? 80 : 130}
-        height={props.isMobile ? 18 : 30}
+        width={props.isMobile ? 90 : 130}
+        height={props.isMobile ? 22 : 30}
         alt="Logo Navbar"
         style={{ margin: props.isMobile ? "2% 3%" : "1% 3%" }}
       />

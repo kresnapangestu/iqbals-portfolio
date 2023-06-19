@@ -18,8 +18,6 @@ const dmsans = DM_Sans({
   subsets: ["latin"],
 });
 
-let fontSize = "12px";
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -32,7 +30,7 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ padding: "0 3rem" }}>
+        <Box style={{ padding: "0 3rem" }}>
           <Typography>{children}</Typography>
         </Box>
       )}
@@ -59,6 +57,7 @@ export default function Works(props) {
         color: "black",
         padding: "calc(100vw/11) 0",
         textAlign: props.isMobile && "center",
+        width: props.isMobile && "100vw",
       }}
     >
       <ThemeProvider
@@ -94,8 +93,10 @@ export default function Works(props) {
           <Tabs
             orientation={props.isMobile !== true && "vertical"}
             variant="scrollable"
+            allowScrollButtonsMobile
             value={value}
             onChange={handleChange}
+            scrollButtons="auto"
             TabIndicatorProps={{
               style: { background: "black" },
             }}
@@ -114,7 +115,7 @@ export default function Works(props) {
               index={index}
               style={{
                 maxWidth: props.isMobile !== true && "calc(100vw/2)",
-                margin: props.isMobile && "3rem",
+                margin: props.isMobile && "5%",
               }}
             >
               <Grid
@@ -154,14 +155,20 @@ export default function Works(props) {
 
 function ToolsChip(props) {
   return (
-    <Grid style={{ display: "flex", flexWrap: "wrap" }}>
+    <Grid
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        placeContent: props.isMobile && "center",
+      }}
+    >
       {props.data.map((data) => (
         <Chip
           caption={data}
           textColor="white"
           background="black"
           borderColor="black"
-          fontSize={props.isMobile ? fontSize : "18px"}
+          fontSize={props.isMobile ? "18px" : "18px"}
           margin="2% 2% 0 0"
         />
       ))}

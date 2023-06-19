@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { DM_Sans } from "next/font/google";
 
 export const WorksDetail = [
@@ -99,7 +100,7 @@ export const ProjectList = [
     tools: ["Figma"],
     caption: (
       <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 30 }}>
+        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
           Oil Mart
         </span>{" "}
         <br></br>
@@ -119,7 +120,7 @@ export const ProjectList = [
     tools: ["React JS", "Fusion Chart"],
     caption: (
       <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 30 }}>
+        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
           XL Axiata PMT/CMT
         </span>{" "}
         <br></br>
@@ -139,7 +140,7 @@ export const ProjectList = [
     tools: ["Figma", "Next JS", "Tailwind CSS"],
     caption: (
       <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 30 }}>
+        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
           MasukBersama
         </span>{" "}
         <br></br>
@@ -155,32 +156,12 @@ export const ProjectList = [
     ),
     open: "https://masukbersama.vercel.app",
   },
-  //   {
-  //     image: "/images/masukbersama_landingpage.webp",
-  //     tools: ["Figma", "Next JS", "Tailwind CSS"],
-  //     caption: (
-  //       <a className={dmsans.className}>
-  //         <span className={dmsans_bold.className} style={{ fontSize: 30 }}>
-  //           MasukBersama Landing Page
-  //         </span>{" "}
-  //         <br></br>
-  //         <br></br>
-  //         Masukbersama is a dual platform application (mobile and website based
-  //         application), which was built with the aim of helping high school
-  //         students to test their competence before taking the college entrance
-  //         test. <br></br>
-  //         <br></br>
-  //         In this project I help to develop the web-base app using Next JS and
-  //         Tailwind CSS, also designing the user interface of the application.
-  //       </a>
-  //     ),
-  //   },
   {
     image: "/images/sama_landingpage.webp",
     tools: ["Figma", "Next JS", "Tailwind CSS"],
     caption: (
       <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 30 }}>
+        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
           Sama Landing Page
         </span>{" "}
         <br></br>
@@ -195,30 +176,12 @@ export const ProjectList = [
     ),
     open: "https://samabandung.vercel.app",
   },
-  //   {
-  //     image: "/images/dalang.webp",
-  //     tools: ["Figma", "React JS"],
-  //     caption: (
-  //       <a className={dmsans.className}>
-  //         <span className={dmsans_bold.className} style={{ fontSize: 30 }}>
-  //           Dalang
-  //         </span> <br></br>
-  //         <br></br>
-  //         Oil Mart is a device application (Tab only) built to support cashier
-  //         work and find out the point of sales of a shop that sells various types
-  //         of oil. The application is made as easy and smart as possible. <br></br>
-  //         <br></br>
-  //         In this project I help to design the User Interface and design concept
-  //         of the application.
-  //       </a>
-  //     ),
-  //   },
   {
     image: "/images/ourinvitation.webp",
     tools: ["React JS", "SCSS", "Next JS", "Tailwind CSS"],
     caption: (
       <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 30 }}>
+        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
           Ourinvitation.id
         </span>{" "}
         <br></br>
@@ -239,7 +202,7 @@ export const ProjectList = [
     tools: ["React JS", "Formik"],
     caption: (
       <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 30 }}>
+        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
           myBKI
         </span>{" "}
         <br></br>
@@ -259,16 +222,16 @@ export const ProjectList = [
     tools: ["Figma", "React JS"],
     caption: (
       <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 30 }}>
+        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
           SPP Mubarokulhuda
         </span>{" "}
         <br></br>
         <br></br>
         SM (Spp Mubarokulhuda) is a cross-platform application created to help
-        parents and the administration of the Madrasah Mubarokulhuda make
-        payments and record tuition. The features of this application include
-        manual tuition payments and bank transfers, arrears reports, financial
-        reports, and recap of tuition payments. <br></br>
+        parents and the administration of the Madrasah Mubarokulhuda. The
+        features of this application include manual tuition payments and bank
+        transfers, arrears reports, financial reports, and recap of tuition
+        payments. <br></br>
         <br></br>
         In this project I help to develop the web-base app using React JS also
         designing the User Interfaces of the website and mobile app.
