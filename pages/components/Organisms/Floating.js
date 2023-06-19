@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Grid } from "@mui/material";
 
-export default function Floating() {
+export default function Floating(props) {
   return (
     <Grid
       container
@@ -14,6 +14,7 @@ export default function Floating() {
         flexDirection: "row-reverse",
         position: "relative",
         zIndex: 99,
+        display: props.isMobile && "none",
       }}
     >
       <div

@@ -1,12 +1,10 @@
 /* eslint-disable react/jsx-key */
 import { useState } from "react";
 import Chip from "../components/Atoms/Chip";
-import { Tabs, Tab, Typography, Box, Grid } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { Grid } from "@mui/material";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import styles from "../../styles/Home.module.css";
 import { DM_Sans } from "next/font/google";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";

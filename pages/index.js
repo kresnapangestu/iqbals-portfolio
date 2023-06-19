@@ -12,7 +12,6 @@ import Floating from "./components/Organisms/Floating";
 import Footer from "./containers/Footer";
 import Cursor from "./components/Atoms/Cursor";
 import { useEffect, useState } from "react";
-import { createTheme, ThemeProvider } from "@mui/material";
 
 const dmsans = DM_Sans({
   weight: "400",
@@ -22,19 +21,20 @@ const dmsans = DM_Sans({
 export default function Home() {
   const [pageLoading, setPageLoading] = useState(true);
   const [fade, setFade] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     setFade(true);
     setTimeout(() => {
       setFade(false);
-      console.log("MASHOOOK");
     }, 4500);
     setTimeout(() => {
       setPageLoading(false);
     }, 5000);
+    if (window?.innerWidth < 600) return setIsMobile(true);
   }, []);
 
   return (
-    <div>
+    <div className={styles.root}>
       <div className={dmsans.className}>
         <Head>
           <title>Pangestu</title>
@@ -51,24 +51,24 @@ export default function Home() {
           ) : (
             <div className={fade === false && `fadeIn`}>
               <Cursor />
-              <Navbar />
-              <Floating />
+              <Navbar isMobile={isMobile} />
+              <Floating isMobile={isMobile} />
 
               <div className={styles.content}>
                 <div id="hero">
-                  <Hero />
+                  <Hero isMobile={isMobile} />
                 </div>
                 <div id="about">
-                  <About />
+                  <About isMobile={isMobile} />
                 </div>
                 <div id="works">
-                  <Works />
+                  <Works isMobile={isMobile} />
                 </div>
                 <div id="project">
-                  <Projects />
+                  <Projects isMobile={isMobile} />
                 </div>
               </div>
-              <Footer />
+              <Footer isMobile={isMobile} />
             </div>
           )}
         </div>

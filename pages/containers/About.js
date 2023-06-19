@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Chip from "../components/Atoms/Chip";
+import styles from "../../styles/Home.module.css";
 
 import { DM_Sans } from "next/font/google";
 
@@ -8,19 +9,20 @@ const dmsans_bold = DM_Sans({
   subsets: ["latin"],
 });
 
-export default function About() {
+export default function About(props) {
+  let fontSize = props.isMobile ? "8px" : "17px";
   return (
     <div
       style={{
         color: "black",
         flex: 1,
         padding: "calc(100vw/11) calc(100vw/7)",
+        textAlign: props.isMobile && "center",
       }}
     >
       <span
-        className={dmsans_bold.className}
+        className={dmsans_bold.className + " " + styles.header_1}
         style={{
-          fontSize: 30,
           fontWeight: 900,
           backgroundColor: "#FFF5EB",
           margin: "0 3%",
@@ -32,11 +34,12 @@ export default function About() {
       </span>
       <div
         style={{
-          border: "solid 1px #000",
+          border: props.isMobile !== true && "solid 1px #000",
           borderRadius: "30px",
           margin: "-1% 0",
           display: "flex",
-          justifyContent: "space-between",
+          flexDirection: props.isMobile ? "column" : "row",
+          // justifyContent: "space-between",
         }}
       >
         <div
@@ -47,11 +50,13 @@ export default function About() {
         >
           <Image
             src="/images/profile_photo.webp"
-            width={400}
-            height={400}
+            width={props.isMobile ? 100 : 400}
+            height={props.isMobile ? 100 : 400}
             alt="Profile Photo"
             style={{
               filter: "opacity(1) drop-shadow(0 0 #ffebd7)",
+              width: props.isMobile && "100%",
+              height: props.isMobile && "100%",
             }}
             className={`styledImage`}
           />
@@ -63,7 +68,7 @@ export default function About() {
             }}
           ></div>
         </div>
-        <span style={{ fontSize: 20, margin: "3%" }}>
+        <span className={styles.paragraph_1} style={{ margin: "3%" }}>
           Loving to interact with computer since childhood makes me had a
           special interest on a computers until i finally choosing to major in
           computer science at the{" "}
@@ -95,22 +100,15 @@ export default function About() {
               display: "flex",
               justifyContent: "left",
               margin: "0 0 3% 0",
+              justifyContent: props.isMobile && "center",
             }}
           >
-            <Chip
-              caption="Javascript"
-              textColor="white"
-              background="black"
-              borderColor="black"
-              fontSize="17px"
-              margin="2% 2% 0 0"
-            />
             <Chip
               caption="React JS"
               textColor="white"
               background="black"
               borderColor="black"
-              fontSize="17px"
+              fontSize={fontSize}
               margin="2% 2% 0 0"
             />
             <Chip
@@ -118,7 +116,7 @@ export default function About() {
               textColor="white"
               background="black"
               borderColor="black"
-              fontSize="17px"
+              fontSize={fontSize}
               margin="2% 2% 0 0"
             />
           </div>

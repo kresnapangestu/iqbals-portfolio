@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
+import styles from "../../styles/Home.module.css";
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -40,20 +41,20 @@ export default function Hero() {
         fontWeight: 900,
       }}
     >
-      <span style={{ fontSize: 30 }}>
+      <span className={styles.header_2}>
         <a className={`${phase}`} style={{ transition: "all 1s" }}>
           {greetingsList[index]}
         </a>
         , My Name is
       </span>
       <br></br>
-      <span style={{ fontSize: 70 }}>
+      <span className={styles.header_1}>
         Mohammad Iqbal Kresna Pangestu. Front-end Website Developer <br></br>
         Based in Bandung.
       </span>
       <br></br>
       <br></br>
-      <span style={{ fontSize: 30 }}>
+      <span className={styles.header_2}>
         I am a software engineer specializing in building (also designing)
         websites. <br></br>Currently helping{" "}
         <a style={{ color: "red" }}>Huawei Tech Investment</a> to build solid

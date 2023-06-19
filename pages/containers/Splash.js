@@ -8,6 +8,7 @@ export default function Splash(props) {
         height: "100vh",
         background: "black",
         textAlign: "center",
+        backgroundSize: "cover",
       }}
       className={props.className + ` center_container`}
     >
