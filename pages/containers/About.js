@@ -10,7 +10,7 @@ const dmsans_bold = DM_Sans({
 });
 
 export default function About(props) {
-  let fontSize = props.isMobile ? "8px" : "17px";
+  let fontSize = props.isMobile ? "13px" : "17px";
   return (
     <div
       style={{
@@ -21,7 +21,7 @@ export default function About(props) {
       }}
     >
       <span
-        className={dmsans_bold.className + " " + styles.header_1}
+        className={dmsans_bold.className + " " + styles.header_2}
         style={{
           fontWeight: 900,
           backgroundColor: "#FFF5EB",
@@ -64,11 +64,11 @@ export default function About(props) {
             className={`overlay`}
             style={{
               padding: "2%",
-              borderRadius: "30px",
+              borderRadius: props.isMobile ? "20px" : "30px",
             }}
           ></div>
         </div>
-        <span className={styles.paragraph_1} style={{ margin: "3%" }}>
+        <span className={styles.header_3} style={{ margin: "3%" }}>
           Loving to interact with computer since childhood makes me had a
           special interest on a computers until i finally choosing to major in
           computer science at the{" "}
@@ -99,7 +99,7 @@ export default function About(props) {
             style={{
               display: "flex",
               justifyContent: "left",
-              margin: "0 0 3% 0",
+              margin: "3% 0",
               justifyContent: props.isMobile && "center",
             }}
           >

@@ -202,6 +202,10 @@
   font-size: 30px;
 }
 
+.header_3 {
+  font-size: 20px;
+}
+
 .paragraph_1 {
   font-size: 24px;
 }
@@ -211,18 +215,17 @@
 }
 @media only screen and (max-width: 600px) {
   .header_1 {
-    font-size: calc(70px / 3);
+    font-size: 35px;
   }
-
   .header_2 {
-    font-size: calc(30px / 3);
+    font-size: 25px;
   }
 
   .paragraph_1 {
-    font-size: calc(24px / 3);
+    font-size: 15px;
   }
 
   .paragraph_2 {
-    font-size: calc(22px / 3);
+    font-size: 13px;
   }
 }

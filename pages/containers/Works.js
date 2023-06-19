@@ -18,6 +18,8 @@ const dmsans = DM_Sans({
   subsets: ["latin"],
 });
 
+let fontSize = "12px";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -45,7 +47,7 @@ function a11yProps(index) {
   };
 }
 
-export default function Works() {
+export default function Works(props) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
@@ -56,6 +58,7 @@ export default function Works() {
       style={{
         color: "black",
         padding: "calc(100vw/11) 0",
+        textAlign: props.isMobile && "center",
       }}
     >
       <ThemeProvider
@@ -76,14 +79,7 @@ export default function Works() {
           },
         })}
       >
-        <span
-          className={dmsans_bold.className}
-          style={{
-            fontSize: 30,
-            fontWeight: 900,
-            borderRadius: "30px",
-          }}
-        >
+        <span className={dmsans_bold.className + " " + styles.header_2}>
           I have worked for a client on
         </span>
         <div
@@ -92,14 +88,14 @@ export default function Works() {
             flexGrow: 1,
             display: "flex",
             margin: "2% 0",
+            flexDirection: props.isMobile && "column",
           }}
         >
           <Tabs
-            orientation="vertical"
+            orientation={props.isMobile !== true && "vertical"}
             variant="scrollable"
             value={value}
             onChange={handleChange}
-            aria-label="Vertical tabs example"
             TabIndicatorProps={{
               style: { background: "black" },
             }}
@@ -117,7 +113,8 @@ export default function Works() {
               value={value}
               index={index}
               style={{
-                maxWidth: "calc(100vw/2)",
+                maxWidth: props.isMobile !== true && "calc(100vw/2)",
+                margin: props.isMobile && "3rem",
               }}
             >
               <Grid
@@ -127,28 +124,23 @@ export default function Works() {
                   transition: "visibility 0s, opacity 0.5s linear",
                 }}
               >
-                <span
-                  className={dmsans_bold.className}
-                  style={{
-                    fontSize: 24,
-                  }}
-                >
+                <span className={dmsans_bold.className + " " + styles.header_3}>
                   {data.caption}
                 </span>
-                <span style={{ opacity: 0.5, fontSize: 22 }}>
+                <span
+                  className={dmsans_bold.className + " " + styles.header_3}
+                  style={{ opacity: 0.5 }}
+                >
                   {data.duration}
                 </span>
-                <span style={{ fontSize: 20 }}> {data.desc}</span>
-                <ToolsChip data={data.tools} />
+                <span className={styles.header_3}> {data.desc}</span>
+                <ToolsChip data={data.tools} isMobile={props.isMobile} />
               </Grid>
             </TabPanel>
           ))}
         </div>
         <a
-          className={dmsans_bold.className}
-          style={{
-            fontSize: 20,
-          }}
+          className={dmsans_bold.className + " " + styles.header_3}
           target="_blank"
           href="https://drive.google.com/file/d/1VqaojaUd3RarrHLOb8h1JJWtAMugoEKr/view?usp=sharing"
           rel="noopener noreferrer"
@@ -162,14 +154,14 @@ export default function Works() {
 
 function ToolsChip(props) {
   return (
-    <Grid style={{ display: "flex", flexDirection: "row" }}>
+    <Grid style={{ display: "flex", flexWrap: "wrap" }}>
       {props.data.map((data) => (
         <Chip
           caption={data}
           textColor="white"
           background="black"
           borderColor="black"
-          fontSize="18px"
+          fontSize={props.isMobile ? fontSize : "18px"}
           margin="2% 2% 0 0"
         />
       ))}

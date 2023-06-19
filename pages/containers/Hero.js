@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
 
-export default function Hero() {
+export default function Hero(props) {
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState("");
   let greetingsList = [
@@ -36,7 +36,9 @@ export default function Hero() {
       style={{
         color: "black",
         flex: 1,
-        padding: "calc(100vw/11) calc(100vw/7)",
+        padding: props.isMobile
+          ? "calc(100vh/11) calc(100vw/7)"
+          : "calc(100vw/11) calc(100vw/7)",
         zIndex: 99,
         fontWeight: 900,
       }}

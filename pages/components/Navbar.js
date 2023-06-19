@@ -34,7 +34,7 @@ export default function Navbar(props) {
         width={props.isMobile ? 80 : 130}
         height={props.isMobile ? 18 : 30}
         alt="Logo Navbar"
-        style={{ margin: "2% 3%" }}
+        style={{ margin: props.isMobile ? "2% 3%" : "1% 3%" }}
       />
       {!props.isMobile ? (
         <>

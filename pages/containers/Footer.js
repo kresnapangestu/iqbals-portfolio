@@ -5,11 +5,14 @@ export default function Footer(props) {
     <div
       id="Footer"
       className={styles.footer}
-      style={{ width: props.isMobile ? "calc(100vw/2)" : "100vw" }}
+      style={{
+        width: props.isMobile ? "100%" : "100vw",
+        color: "black",
+        fontSize: props.isMobile && 10,
+        padding: props.isMobile && "1rem calc(100vw/5)",
+      }}
     >
-      <span
-        style={{ color: "black", fontSize: 10, padding: "0 calc(100vw/5)" }}
-      >
+      <span style={{}}>
         Designed in <b> &nbsp;Figma</b>, built with <b> &nbsp;Next JS&nbsp;</b>{" "}
         & <b> &nbsp;Material</b>, also deployed with <b> &nbsp;Vercel </b>. All
         text is set in the <b> &nbsp;DM Sans&nbsp;</b> typeface.
