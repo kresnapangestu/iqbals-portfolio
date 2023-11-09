@@ -13,9 +13,9 @@ export default function Footer(props) {
       }}
     >
       <span>
-        Designed in <b> &nbsp;Figma</b>, built with <b> &nbsp;Next JS&nbsp;</b>{" "}
-        & <b> &nbsp;Material</b>, also deployed with <b> &nbsp;Netlify </b>. All
-        text is set in the <b> &nbsp;DM Sans&nbsp;</b> typeface.
+        Designed in <b>Figma</b>, built with <b> Next JS</b> & <b> Material</b>,
+        also deployed with <b> Netlify </b>. All text is set in the{" "}
+        <b> DM Sans</b> typeface.
       </span>
     </div>
   );
