@@ -80,7 +80,7 @@ export default function Navbar(props) {
             caption="Resume"
             borderColor="white"
             fontSize="18px"
-            href="https://drive.google.com/file/d/1VqaojaUd3RarrHLOb8h1JJWtAMugoEKr/view?usp=sharing"
+            href="https://drive.google.com/drive/folders/1NYDO4BkBAZ1-IMU47hyK9wnhmDt46mGF?usp=sharing"
             margin="1% 3%"
           />
         </>
@@ -144,7 +144,7 @@ export default function Navbar(props) {
             <MenuItem>
               <a
                 target="_blank"
-                href="https://drive.google.com/file/d/1VqaojaUd3RarrHLOb8h1JJWtAMugoEKr/view?usp=sharing"
+                href="https://drive.google.com/drive/folders/1NYDO4BkBAZ1-IMU47hyK9wnhmDt46mGF?usp=sharing"
                 rel="noopener noreferrer"
                 style={{
                   fontSize: 18,

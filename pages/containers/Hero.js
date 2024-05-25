@@ -67,7 +67,7 @@ export default function Hero(props) {
         websites. <br></br>Currently helping{" "}
         <a style={{ color: "red" }}>Huawei Tech Investment</a> to build solid
         and scalable products. <br></br>
-        <br></br> I am passionate to build beautifully minamalist interface and
+        <br></br> I am passionate to build beautifully pleasing interface and
         lovable products 🤓
       </span>
     </div>

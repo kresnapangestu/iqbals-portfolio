@@ -13,10 +13,46 @@ export const WorksDetail = [
         in the form of various types of charts, maps, and tables containing data
         needed by clients with high positions in the company. In this project I
         help to develop the web-base app using React JS and Fusion Chart as a
-        data visualization.
+        data visualization. <br></br>Furthermore, Initiated the migration of
+        legacy applications to modern tech stacks using Next.js and Tailwind
+        CSS, ensuring improved performance, maintainability, and scalability.
+        Also, adopted and implemented Atomic Design principles to create a
+        scalable and reusable component-based architecture for the application,
+        ensuring consistency and efficiency in the design system.
       </p>
     ),
-    tools: ["React JS", "Javascript", "Fusion Charts"],
+    tools: [
+      "React JS",
+      "Next JS",
+      "Tailwind CSS",
+      "Material UI",
+      "Fusion Charts",
+    ],
+  },
+  {
+    place: "STARA",
+    caption: "Front-end Developer (Part-time)",
+    duration: "July 2023 – Present",
+    desc: (
+      <p>
+        Created a web application for Enduser and Internal Badan Pengelolaan
+        Lingkungan Hidup (BPLDH) to streamline funding requests and verify
+        stakeholder submissions, ensuring efficient allocation of resources.
+        Utilizing React JS and implementing Atomic Design.
+        <br></br>
+        <ul>
+          <li>
+            Developed user-centric features to enhance the experience of
+            external BPLDH users.
+          </li>
+          <li>
+            Developed and maintained internal tools for efficient workflow
+            management for Internal BPLDH.
+          </li>
+        </ul>
+      </p>
+    ),
+    tools: ["React JS", "React Hook Form"],
   },
   {
     place: "Sama",
@@ -69,9 +105,29 @@ export const WorksDetail = [
     duration: "October 2021 – December 2021",
     desc: (
       <p>
-        Collaborated with another team from another company to develop and
-        maintain major features of Biro Klasifikasi Indonesia (BKI) dashboard
-        web apps.
+        <ul>
+          <li>
+            Developed and Maintained Major Features for Biro Klasifikasi
+            Indonesia (BKI) Web Apps
+          </li>
+          <li>
+            Implemented responsive and user-friendly interfaces using React JS
+            and Material UI.
+          </li>
+          <li>
+            Successfully collaborated with an external team from another company
+            to deliver critical features for BKI
+          </li>
+          web apps, enhancing functionality and user experience.
+          <li>
+            Utilized React JS, Formik, and Material UI to develop responsive,
+            accessible, and visually appealing web interfaces.
+          </li>
+          <li>
+            Participated in a role to maintain high code quality through
+            diligent reviews and adherence to best practices.
+          </li>
+        </ul>
       </p>
     ),
     tools: ["React JS", "Formik"],

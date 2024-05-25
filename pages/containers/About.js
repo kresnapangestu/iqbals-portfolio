@@ -80,7 +80,8 @@ export default function About(props) {
           <br></br>
           My main focus now is building products that well designed and easy to
           use for{" "}
-          <a className={dmsans_bold.className}>Huawei Tech Investment</a>.
+          <a className={dmsans_bold.className}>Huawei Tech Investment</a> as a
+          Frontend Developer.
           <br></br>
           <br></br> If i’m away from keyboard i usually go to the local coffee
           shops, gaming with my friends, or listening my playlist on{" "}

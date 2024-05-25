@@ -143,7 +143,7 @@ export default function Works(props) {
         <a
           className={dmsans_bold.className + " " + styles.header_3}
           target="_blank"
-          href="https://drive.google.com/file/d/1VqaojaUd3RarrHLOb8h1JJWtAMugoEKr/view?usp=sharing"
+          href="https://drive.google.com/file/d/1a3XHkey6ROiKEBxXV1sjnPeiTbRPZfyP/view?usp=sharing"
           rel="noopener noreferrer"
         >
           View Full Resume ➜
