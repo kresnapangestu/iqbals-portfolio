@@ -49,7 +49,7 @@ export default function About(props) {
           }}
         >
           <Image
-            src="/images/profile_photo.webp"
+            src="/images/profile_photo_black.webp"
             width={props.isMobile ? 100 : 400}
             height={props.isMobile ? 100 : 400}
             alt="Profile Photo"
@@ -57,6 +57,7 @@ export default function About(props) {
               filter: "opacity(1) drop-shadow(0 0 #ffebd7)",
               width: props.isMobile && "100%",
               height: props.isMobile && "100%",
+              borderRadius: "8%",
             }}
             className={`styledImage`}
           />
