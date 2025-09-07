@@ -7,19 +7,41 @@ export const WorksDetail = [
     caption: "Front-end Developer (Full-time)",
     duration: "October 2021 – Present",
     desc: (
-      <p>
-        Developed, maintained, also improved web apps for XL AXIATA with the aim
-        to be a Service Operation Center. The information provided is displayed
-        in the form of various types of charts, maps, and tables containing data
-        needed by clients with high positions in the company. In this project I
-        help to develop the web-base app using React JS and Fusion Chart as a
-        data visualization. <br></br>Furthermore, Initiated the migration of
-        legacy applications to modern tech stacks using Next.js and Tailwind
-        CSS, ensuring improved performance, maintainability, and scalability.
-        Also, adopted and implemented Atomic Design principles to create a
-        scalable and reusable component-based architecture for the application,
-        ensuring consistency and efficiency in the design system.
-      </p>
+      <ul>
+        <li>
+          Revamped and maintained large-scale web applications for XL Axiata’s
+          transformation into XLSMART, significantly improving user experience
+          and operational visibility for the Service Operation Center.
+        </li>
+        <li>
+          Led the migration of mission-critical legacy modules to a modern stack
+          (Next.js, Tailwind CSS) under the XLMS initiative, resulting in an
+          ~50% reduction in development time, ~20% faster load speeds, and
+          significantly improved code maintainability.
+        </li>
+        <li>
+          Supported legacy React.js applications handling real-time reporting
+          and analytics, ensuring zero disruption during modernization efforts.
+        </li>
+        <li>
+          Built an executive dashboard using Next.js, FusionCharts, Tailwind
+          CSS, and Material UI, enabling real-time monitoring of KPIs and
+          service performance by C-level stakeholders.
+        </li>
+        <li>
+          Designed and implemented dynamic data visualizations (charts, tables,
+          maps) using Recharts and FusionCharts, improving clarity and insight
+          delivery for over 500+ daily users.
+        </li>
+        <li>
+          Applied Atomic Design + modular architecture, increasing UI component
+          reusability and reducing development time by ~30%.
+        </li>
+        <li>
+          Leveraged React Context API and dynamic URL parameters to enable
+          seamless state management and filtered data views across dashboards.
+        </li>
+      </ul>
     ),
     tools: [
       "React JS",

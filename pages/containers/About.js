@@ -49,7 +49,7 @@ export default function About(props) {
           }}
         >
           <Image
-            src="/images/profile_photo_black.webp"
+            src="/images/profile_photo_yellow.png"
             width={props.isMobile ? 100 : 400}
             height={props.isMobile ? 100 : 400}
             alt="Profile Photo"
