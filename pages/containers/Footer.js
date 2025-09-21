@@ -21,7 +21,7 @@ export default function Footer(props) {
         <span style={{ fontSize: props.isMobile ? 12 : 24 }}>
           Have a project in mind?
         </span>
-        <span style={{ fontSize: props.isMobile ? 20 : 48, fontWeight: "900" }}>
+        <span style={{ fontSize: props.isMobile ? 16 : 48, fontWeight: "900" }}>
           mohammadiqbalkresna@gmail.com
         </span>
       </div>
