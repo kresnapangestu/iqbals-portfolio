@@ -22,7 +22,7 @@ export default function Floating(props) {
         style={{
           position: "fixed",
           left: "3%",
-          top: "40%",
+          top: "20%",
           display: "flex",
           flexDirection: "column",
         }}
@@ -86,7 +86,7 @@ export default function Floating(props) {
           position: "fixed",
           transform: "rotate(90deg)",
           //   left: "3%",
-          top: "60%",
+          top: "30%",
           display: "flex",
           flexDirection: "column",
         }}

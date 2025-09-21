@@ -13,7 +13,10 @@ export default function Footer(props) {
     >
       <div
         style={{
-          marginBottom: "3rem",
+          padding: !props?.isMobile && "3rem 0",
+          backgroundColor: !props?.isMobile && "black",
+          marginBottom: !props?.isMobile ? "1rem" : "3rem",
+          color: !props?.isMobile ? "white" : "black",
           display: "flex",
           flexDirection: "column",
         }}
