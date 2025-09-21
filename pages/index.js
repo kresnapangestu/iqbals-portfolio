@@ -70,7 +70,11 @@ export default function Home() {
   }, [activeSection]);
 
   useEffect(() => {
-    console.log("activeSection={activeSection}", activeSection);
+    console.log(
+      "activeSection={activeSection}",
+      activeSection,
+      window?.innerWidth
+    );
   }, [activeSection]);
 
   return (

@@ -85,7 +85,7 @@ export default function Projects(props) {
                 className={`text`}
                 style={{ textAlign: props.isMobile && "left", color: "white" }}
               >
-                <a className={styles.header_3}>{data.caption}</a>
+                <a style={{ fontSize: props.isMobile && 12 }}>{data.caption}</a>
                 <ToolsChip
                   data={data.tools}
                   margin={props.isMobile ? "5% 2% 5% 0" : "5% 2% 5% 0"}
@@ -152,7 +152,7 @@ function ToolsChip(props) {
           textColor="white"
           background="black"
           borderColor="black"
-          fontSize={props.isMobile ? "16px" : "18px"}
+          fontSize={props.isMobile ? "10px" : "18px"}
           margin={props.margin || "2% 2% 0 0"}
         />
       ))}
