@@ -21,7 +21,9 @@ const dmsans = DM_Sans({
 export default function Home() {
   const [pageLoading, setPageLoading] = useState(true);
   const [fade, setFade] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
   const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     setFade(true);
     setTimeout(() => {
@@ -32,6 +34,44 @@ export default function Home() {
     }, 5000);
     if (window?.innerWidth < 600) return setIsMobile(true);
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll(
+        "#hero, #about, #works, #project"
+      );
+      const viewportCenter = window.innerHeight / 2;
+
+      let closestSection = null;
+      let minDistance = Infinity;
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        const sectionCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(viewportCenter - sectionCenter);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestSection = section;
+        }
+      });
+
+      if (closestSection && closestSection.id !== activeSection) {
+        setActiveSection(closestSection.id);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [activeSection]);
+
+  useEffect(() => {
+    console.log("activeSection={activeSection}", activeSection);
+  }, [activeSection]);
 
   return (
     <div className={styles.root}>
@@ -52,7 +92,7 @@ export default function Home() {
             <div className={fade === false && `fadeIn`}>
               <Cursor />
               <Navbar isMobile={isMobile} />
-              <Floating isMobile={isMobile} />
+              <Floating activeSection={activeSection} isMobile={isMobile} />
 
               <div className={styles.content}>
                 <div id="hero">

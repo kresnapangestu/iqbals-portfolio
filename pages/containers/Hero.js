@@ -63,10 +63,10 @@ export default function Hero(props) {
       <br></br>
       <br></br>
       <span className={styles.header_2}>
-        I am a software engineer specializing in building (also designing)
-        websites. <br></br>Currently helping{" "}
-        <a style={{ color: "red" }}>Huawei Tech Investment</a> to build solid
-        and scalable products. <br></br>
+        4+ year experience software engineer specializing in building (sometimes
+        designing) websites. <br></br>Currently collaborating and helping{" "}
+        <a style={{ color: "#D7942D" }}>Huawei Tech Investment</a> to build
+        solid and scalable products. <br></br>
         <br></br> I am passionate to build beautifully pleasing interface and
         lovable products 🤓
       </span>

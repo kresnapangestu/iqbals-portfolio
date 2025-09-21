@@ -29,8 +29,8 @@ a {
 .ring {
   -webkit-transition-duration: 100ms;
   -webkit-transition-timing-function: ease-out;
-  background: #ffebd7;
-  filter: blur(50px);
+  background: #fffbb7;
+  filter: blur(100px);
   height: 300px;
   left: 0;
   pointer-events: none;
@@ -63,7 +63,7 @@ a {
   width: 100%;
   opacity: 0.6;
   transition: 0.5s ease;
-  background-color: #ffebd7;
+  background-color: #a0a0a0;
 }
 
 .styledContainer:hover .overlay {

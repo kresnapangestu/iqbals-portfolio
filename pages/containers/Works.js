@@ -67,8 +67,8 @@ export default function Works(props) {
               styleOverrides: {
                 root: {
                   "&.Mui-selected": {
-                    color: "black",
-                    backgroundColor: "#ffebd7",
+                    color: "#ffffff",
+                    backgroundColor: "black",
                     opacity: 1,
                     fontWeight: 500,
                   },
@@ -79,7 +79,7 @@ export default function Works(props) {
         })}
       >
         <span className={dmsans_bold.className + " " + styles.header_2}>
-          I have worked for a client on
+          I have worked for
         </span>
         <div
           className={dmsans.className}

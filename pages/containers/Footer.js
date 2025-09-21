@@ -8,14 +8,30 @@ export default function Footer(props) {
       style={{
         width: props.isMobile ? "100%" : "100vw",
         color: "black",
-        fontSize: props.isMobile && 15,
         padding: props.isMobile && "1rem calc(100vw/10)",
       }}
     >
-      <span>
-        Designed in <b>Figma</b>, built with <b>Next JS</b> & <b>Material</b>,
-        also deployed with <b>Netlify</b>. All text is set in the{" "}
-        <b> DM Sans</b> typeface.
+      <div
+        style={{
+          marginBottom: "3rem",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <span style={{ fontSize: props.isMobile ? 12 : 24 }}>
+          Have a project in mind?
+        </span>
+        <span style={{ fontSize: props.isMobile ? 20 : 48, fontWeight: "900" }}>
+          mohammadiqbalkresna@gmail.com
+        </span>
+      </div>
+      <span
+        style={{
+          fontSize: props.isMobile ? 10 : 12,
+        }}
+      >
+        © 2025 All rights reserved. Coded with ❤️ using Next.js <br></br>
+        Developed By <b>Mohammad Iqbal Kresna Pangestu</b>
       </span>
     </div>
   );

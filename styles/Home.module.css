@@ -6,7 +6,7 @@
   background-size: cover;
   overflow-x: hidden;
   min-height: 100vh;
-  background: #fff5eb;
+  background: #ffffff;
   display: flex;
   flex-direction: column !important;
 }
@@ -175,7 +175,7 @@
     border-color: #222;
   }
   .code {
-    background: #fff5eb;
+    background: #ffffff;
   }
   .logo img {
     filter: invert(1);

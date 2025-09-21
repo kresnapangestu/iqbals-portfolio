@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Grid } from "@mui/material";
+import { FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 
 export default function Floating(props) {
   return (
@@ -38,14 +39,10 @@ export default function Floating(props) {
             rel="noopener noreferrer"
           >
             {" "}
-            <Image
-              src="/images/instagram.webp"
-              width={30}
-              height={30}
-              alt="Logo Instagram"
-              loading="eager"
+            <FaInstagram
               style={{
-                position: "absolute",
+                fontSize: 30,
+                color: props?.activeSection !== "about" ? "black" : "#FFF66B",
               }}
             />
           </a>
@@ -58,14 +55,10 @@ export default function Floating(props) {
             rel="noopener noreferrer"
           >
             {" "}
-            <Image
-              src="/images/linkedin.webp"
-              width={30}
-              height={30}
-              loading="eager"
-              alt="Logo linkedin"
+            <FaLinkedinIn
               style={{
-                position: "absolute",
+                fontSize: 30,
+                color: props?.activeSection !== "about" ? "black" : "#FFF66B",
               }}
             />
           </a>
@@ -78,14 +71,10 @@ export default function Floating(props) {
             rel="noopener noreferrer"
           >
             {" "}
-            <Image
-              src="/images/Github.webp"
-              width={30}
-              height={30}
-              alt="Logo Github"
-              loading="eager"
+            <FaGithub
               style={{
-                position: "absolute",
+                fontSize: 30,
+                color: props?.activeSection !== "about" ? "black" : "#FFF66B",
               }}
             />
           </a>
@@ -107,6 +96,7 @@ export default function Floating(props) {
             style={{
               position: "absolute",
               color: "black",
+              color: props?.activeSection !== "about" ? "black" : "#FFF66B",
             }}
           >
             mohammadiqbalkresna@gmail.com

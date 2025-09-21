@@ -28,7 +28,6 @@ export default function Projects(props) {
   return (
     <div
       style={{
-        color: "black",
         padding: "calc(100vw/11) 0",
         display: "flex",
         flexDirection: "column",
@@ -40,6 +39,8 @@ export default function Projects(props) {
         style={{
           borderRadius: "30px",
           textAlign: "center",
+
+          color: "black",
         }}
       >
         My Projects
@@ -74,7 +75,7 @@ export default function Projects(props) {
                   height={600}
                   className={` styledImage`}
                   style={{
-                    filter: "blur(2px)",
+                    filter: "blur(4px)",
                     // "-webkit-filter": "blur(1px)",
                   }}
                 />
@@ -82,7 +83,7 @@ export default function Projects(props) {
               <div className={`overlay`}></div>
               <span
                 className={`text`}
-                style={{ textAlign: props.isMobile && "left" }}
+                style={{ textAlign: props.isMobile && "left", color: "white" }}
               >
                 <a className={styles.header_3}>{data.caption}</a>
                 <ToolsChip
@@ -125,8 +126,9 @@ export default function Projects(props) {
       <a
         className={dmsans_bold.className + " " + styles.header_3}
         target="_blank"
-        href="https://drive.google.com/file/d/1fYnYU6lwSHLcUPkDLKWJ3i1alzp1Xi5l/view?usp=sharing"
+        href="https://drive.google.com/file/d/13ARBqooRlTh4BOMDtfqeWcG0Pq_VL3tA/view?usp=sharing"
         rel="noopener noreferrer"
+        style={{ color: "black" }}
       >
         Show More ➜
       </a>

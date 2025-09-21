@@ -14,17 +14,19 @@ export default function About(props) {
   return (
     <div
       style={{
+        backgroundColor: "black",
         color: "black",
         flex: 1,
         padding: "calc(100vw/11) calc(100vw/7)",
         textAlign: props.isMobile && "center",
+        color: "white",
       }}
     >
       <span
         className={dmsans_bold.className + " " + styles.header_2}
         style={{
           fontWeight: 900,
-          backgroundColor: "#FFF5EB",
+          backgroundColor: "black",
           margin: "0 3%",
           padding: "0 1%",
           borderRadius: "30px",
@@ -34,7 +36,7 @@ export default function About(props) {
       </span>
       <div
         style={{
-          border: props.isMobile !== true && "solid 1px #000",
+          border: props.isMobile !== true && "solid 1px #fff",
           borderRadius: "30px",
           margin: "-1% 0",
           display: "flex",
@@ -107,17 +109,17 @@ export default function About(props) {
           >
             <Chip
               caption="React JS"
-              textColor="white"
-              background="black"
-              borderColor="black"
+              textColor="black"
+              background="#FFF66B"
+              borderColor="#FFF66B"
               fontSize={fontSize}
               margin="2% 2% 0 0"
             />
             <Chip
               caption="Next JS"
-              textColor="white"
-              background="black"
-              borderColor="black"
+              textColor="black"
+              background="#FFF66B"
+              borderColor="#FFF66B"
               fontSize={fontSize}
               margin="2% 2% 0 0"
             />
