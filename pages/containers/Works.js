@@ -6,7 +6,7 @@ import { createTheme, ThemeProvider } from "@mui/material";
 
 import styles from "../../styles/Home.module.css";
 import { DM_Sans } from "next/font/google";
-import { WorksDetail } from "../../public/text";
+import { WorksDetail } from "../../constants";
 
 const dmsans_bold = DM_Sans({
   weight: "700",

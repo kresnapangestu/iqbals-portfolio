@@ -11,8 +11,7 @@ import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 
 import { Code, Launch } from "@mui/icons-material";
-
-import { ProjectList } from "../../public/text";
+import { ProjectList } from "../../constants";
 
 const dmsans_bold = DM_Sans({
   weight: "700",
