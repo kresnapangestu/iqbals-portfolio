@@ -28,7 +28,7 @@ export default function Projects(props) {
   return (
     <div
       style={{
-        padding: "calc(100vw/11) 0",
+        padding: "calc(100vh/14) 0",
         display: "flex",
         flexDirection: "column",
         textAlign: "center",
@@ -39,7 +39,7 @@ export default function Projects(props) {
         style={{
           borderRadius: "30px",
           textAlign: "center",
-
+          marginTop: "2rem",
           color: "black",
         }}
       >

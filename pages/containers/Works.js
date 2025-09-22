@@ -55,9 +55,11 @@ export default function Works(props) {
     <div
       style={{
         color: "black",
-        padding: "calc(100vw/11) 0",
+        padding: props.isMobile
+          ? "calc(100vw/11) 0"
+          : "calc(100vw/11) calc(100vw/6)",
         textAlign: props.isMobile && "center",
-        width: props.isMobile && "100vw",
+        width: "100vw",
       }}
     >
       <ThemeProvider
@@ -114,7 +116,7 @@ export default function Works(props) {
               value={value}
               index={index}
               style={{
-                maxWidth: props.isMobile !== true && "calc(100vw/2)",
+                maxWidth: props.isMobile !== true && "60vw",
                 margin: props.isMobile && "5%",
               }}
             >
@@ -125,16 +127,28 @@ export default function Works(props) {
                   transition: "visibility 0s, opacity 0.5s linear",
                 }}
               >
-                <span className={dmsans_bold.className + " " + styles.header_3}>
+                <span
+                  className={dmsans_bold.className}
+                  style={{
+                    fontSize: props.isMobile ? 14 : 20,
+                  }}
+                >
                   {data.caption}
                 </span>
                 <span
-                  className={dmsans_bold.className + " " + styles.header_3}
-                  style={{ opacity: 0.5 }}
+                  className={dmsans_bold.className}
+                  style={{ opacity: 0.5, fontSize: props.isMobile ? 12 : 20 }}
                 >
-                  {data.duration}
+                  {data.duration} &nbsp;({data.realDuration})
                 </span>
-                <span className={styles.header_3}> {data.desc}</span>
+                <span
+                  style={{
+                    fontSize: props.isMobile ? 10 : 20,
+                  }}
+                >
+                  {" "}
+                  {data.desc}
+                </span>
                 <ToolsChip data={data.tools} isMobile={props.isMobile} />
               </Grid>
             </TabPanel>
@@ -168,7 +182,7 @@ function ToolsChip(props) {
           textColor="white"
           background="black"
           borderColor="black"
-          fontSize={props.isMobile ? "18px" : "18px"}
+          fontSize={props.isMobile ? "10px" : "18px"}
           margin="2% 2% 0 0"
         />
       ))}

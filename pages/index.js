@@ -81,7 +81,7 @@ export default function Home() {
     <div className={styles.root}>
       <div className={dmsans.className}>
         <Head>
-          <title>Pangestu</title>
+          <title>Pangestu | Frontend Developer</title>
           <meta
             name="description"
             content="Portfolio of Mohammad Iqbal Kresna Pangestu"

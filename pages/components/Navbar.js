@@ -27,6 +27,7 @@ export default function Navbar(props) {
         justifyContent: "space-between",
         backgroundSize: "cover",
         zIndex: 99,
+        padding: props?.isMobile && "1rem 0",
       }}
     >
       <Image
@@ -34,7 +35,9 @@ export default function Navbar(props) {
         width={props.isMobile ? 90 : 130}
         height={props.isMobile ? 22 : 30}
         alt="Logo Navbar"
-        style={{ margin: props.isMobile ? "2% 3%" : "1% 3%" }}
+        style={{
+          margin: props.isMobile ? "2% 2.5rem" : "1% 3%",
+        }}
       />
       {!props.isMobile ? (
         <>

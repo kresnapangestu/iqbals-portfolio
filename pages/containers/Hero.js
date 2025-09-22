@@ -13,7 +13,6 @@ export default function Hero(props) {
   const [index, setIndex] = useState(0);
   const [phase, setPhase] = useState("");
   let greetingsList = [
-    "Hey",
     "Hello",
     "Nǐ hǎo",
     "Bonjour",
@@ -21,6 +20,11 @@ export default function Hero(props) {
     "Konnichiwa",
     "Ahoj",
     "Hola",
+    "Namaste",
+    "Здравствуйте",
+    "Ciao",
+    "Annyeong",
+    "Ola",
   ];
 
   useEffect(() => {
@@ -44,27 +48,41 @@ export default function Hero(props) {
         color: "black",
         flex: 1,
         padding: props.isMobile
-          ? "calc(100vh/11) calc(100vw/7)"
+          ? "calc(100vh/6.8) calc(100vw/7)"
           : "calc(100vw/11) calc(100vw/7)",
         zIndex: 99,
       }}
     >
-      <span className={styles.header_2}>
+      <span
+        style={{
+          fontSize: props.isMobile ? 20 : 30,
+        }}
+      >
         <a className={`${phase}`} style={{ transition: "all 1s" }}>
           {greetingsList[index]}
         </a>
         , My Name is
       </span>
       <br></br>
-      <span className={dmsans_bold.className + " " + styles.header_1}>
-        Mohammad Iqbal Kresna Pangestu. Front-end Website Developer <br></br>
-        Based in Bandung.
+      <span
+        className={dmsans_bold.className}
+        style={{
+          fontSize: props.isMobile ? 32 : 62,
+        }}
+      >
+        Mohammad Iqbal Kresna Pangestu. <br></br>Front-end Website Developer{" "}
+        <br></br>
+        Based in Bandung & Jakarta.
       </span>
       <br></br>
       <br></br>
-      <span className={styles.header_2}>
+      <span
+        style={{
+          fontSize: props.isMobile ? 20 : 32,
+        }}
+      >
         4+ year experience software engineer specializing in building (sometimes
-        designing) websites. <br></br>Currently collaborating and helping{" "}
+        designing) websites. Currently collaborating and helping{" "}
         <a style={{ color: "#D7942D" }}>Huawei Tech Investment</a> to build
         solid and scalable products. <br></br>
         <br></br> I am passionate to build beautifully pleasing interface and

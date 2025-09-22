@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { DM_Sans } from "next/font/google";
+import { diffInYearsMonths } from "../pages/helpers";
 
 export const WorksDetail = [
   {
     place: "Huawei",
     caption: "Front-end Developer (Full-time)",
+
     duration: "October 2021 – Present",
+    realDuration: diffInYearsMonths("October 2021"),
     desc: (
       <ul>
         <li>
@@ -41,6 +44,15 @@ export const WorksDetail = [
           Leveraged React Context API and dynamic URL parameters to enable
           seamless state management and filtered data views across dashboards.
         </li>
+
+        <li>
+          {" "}
+          Developed and maintained over 40 data dashboards for
+          telecommunications user analytics, optimizing data visualization and
+          reporting efficiency. Collaborated with cross-functional teams to
+          ensure accuracy, scalability, and seamless integration with existing
+          systems, enhancing decision-making processes and user experience.
+        </li>
       </ul>
     ),
     tools: [
@@ -54,7 +66,9 @@ export const WorksDetail = [
   {
     place: "STARA",
     caption: "Front-end Developer (Part-time)",
-    duration: "July 2023 – Present",
+
+    duration: "July 2023 – July 2024",
+    realDuration: diffInYearsMonths("July 2023", "July 2024"),
     desc: (
       <p>
         Created a web application for Enduser and Internal Badan Pengelolaan
@@ -79,7 +93,9 @@ export const WorksDetail = [
   {
     place: "Sama",
     caption: "Front-end Developer & UI/UX Designer (Freelance) ",
+
     duration: "July 2022 – February 2023",
+    realDuration: diffInYearsMonths("July 2022", "February 2023"),
     desc: (
       <p>
         {" "}
@@ -88,13 +104,21 @@ export const WorksDetail = [
         apps.
         <ul>
           <li>
+            Helping Designed and developed In-house application of the
+            Indonesian Ministry of Manpower.
+          </li>
+          <li>
+            Helping Designed User Interfaces Indonesian Valve Manufacturing
+            Company Profile.
+          </li>
+          <li>
             Helping Designed User Interfaces for Oil Mart (Point of sales and
-            cashier app){" "}
+            cashier app).
           </li>
           <li>
             Helping Designed User Interfaces also developed landing page and web
             applications for MasukBersama (learning platform) using Next JS and
-            Tailwind CSS{" "}
+            Tailwind CSS.
           </li>
           <li>
             Helping Designed User Interfaces also developed landing page and web
@@ -109,7 +133,9 @@ export const WorksDetail = [
   {
     place: "Ourinvitation.id",
     caption: "Front-end Developer (Freelance)",
+
     duration: "September 2021 – February 2022",
+    realDuration: diffInYearsMonths("September 2021", "February 2022"),
     desc: (
       <p>
         Helping team to developed A web-based online wedding invitation
@@ -124,7 +150,9 @@ export const WorksDetail = [
   {
     place: "Qtasnim",
     caption: "Front-end Developer (Part-time)",
+
     duration: "October 2021 – December 2021",
+    realDuration: diffInYearsMonths("October 2021", "December 2021"),
     desc: (
       <p>
         <ul>
@@ -155,9 +183,11 @@ export const WorksDetail = [
     tools: ["React JS", "Formik"],
   },
   {
-    place: "Bigio",
+    place: "BIGIO",
     caption: "Front-end Developer (Internship)",
+
     duration: "July 2020 – October 2020",
+    realDuration: diffInYearsMonths("July 2020", "October 2020"),
     desc: (
       <p>
         Learning by Developing BIG Audit Trail Web apps. a web apps can record

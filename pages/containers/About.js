@@ -71,7 +71,7 @@ export default function About(props) {
             }}
           ></div>
         </div>
-        <span className={styles.header_3} style={{ margin: "3%" }}>
+        <span style={{ margin: "3%", fontSize: props.isMobile ? 14 : 20 }}>
           Loving to interact with computer since childhood makes me had a
           special interest on a computers until i finally choosing to major in
           computer science at the{" "}

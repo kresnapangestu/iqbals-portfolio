@@ -22,7 +22,7 @@ export default function Footer(props) {
         }}
       >
         <span style={{ fontSize: props.isMobile ? 12 : 24 }}>
-          Have a project in mind?
+          Let&apos;s Collaborate! Hit me up at
         </span>
         <span style={{ fontSize: props.isMobile ? 16 : 48, fontWeight: "900" }}>
           mohammadiqbalkresna@gmail.com
@@ -34,7 +34,7 @@ export default function Footer(props) {
         }}
       >
         © 2025 All rights reserved. Coded with ❤️ using Next.js <br></br>
-        Developed By <b>Mohammad Iqbal Kresna Pangestu</b>
+        Designed and Developed By <b>Mohammad Iqbal Kresna Pangestu</b>
       </span>
     </div>
   );
