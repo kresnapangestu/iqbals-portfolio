@@ -27,7 +27,7 @@ export default function Navbar(props) {
         justifyContent: "space-between",
         backgroundSize: "cover",
         zIndex: 99,
-        padding: props?.isMobile && "1rem 0",
+        padding: props?.isMobile && "0.4rem 0",
       }}
     >
       <Image

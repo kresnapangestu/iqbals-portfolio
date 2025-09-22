@@ -84,7 +84,7 @@ export default function Projects(props) {
                 className={`text`}
                 style={{ textAlign: props.isMobile && "left", color: "white" }}
               >
-                <a style={{ fontSize: props.isMobile && 12 }}>{data.caption}</a>
+                <a style={{ fontSize: props.isMobile && 14 }}>{data.caption}</a>
                 <ToolsChip
                   data={data.tools}
                   margin={props.isMobile ? "5% 2% 5% 0" : "5% 2% 5% 0"}

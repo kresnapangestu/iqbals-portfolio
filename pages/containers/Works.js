@@ -130,20 +130,20 @@ export default function Works(props) {
                 <span
                   className={dmsans_bold.className}
                   style={{
-                    fontSize: props.isMobile ? 14 : 20,
+                    fontSize: props.isMobile ? 16 : 20,
                   }}
                 >
                   {data.caption}
                 </span>
                 <span
                   className={dmsans_bold.className}
-                  style={{ opacity: 0.5, fontSize: props.isMobile ? 12 : 20 }}
+                  style={{ opacity: 0.5, fontSize: props.isMobile ? 15 : 20 }}
                 >
                   {data.duration} &nbsp;({data.realDuration})
                 </span>
                 <span
                   style={{
-                    fontSize: props.isMobile ? 10 : 20,
+                    fontSize: props.isMobile ? 14 : 20,
                   }}
                 >
                   {" "}
