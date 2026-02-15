@@ -51,7 +51,7 @@ export default function About(props) {
           }}
         >
           <Image
-            src="/images/profile_photo_yellow.png"
+            src="/images/profile_picture.png"
             width={props.isMobile ? 100 : 400}
             height={props.isMobile ? 100 : 400}
             alt="Profile Photo"

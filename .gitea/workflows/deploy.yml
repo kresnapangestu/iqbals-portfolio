@@ -10,23 +10,28 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
       - name: Deploy to Production
         run: |
           set -e
 
           DEPLOY_DIR=/home/pangestu/srv/portfolio
+          REPO_URL=git@localhost:kresnapangestu/iqbals-portfolio.git
 
           echo "📦 Deploying to $DEPLOY_DIR..."
 
-          # Create directory
-          mkdir -p $DEPLOY_DIR
+          # Setup Git SSH
+          export GIT_SSH_COMMAND="ssh -i /home/pangestu/.ssh/gitea-deploy -p 222 -o StrictHostKeyChecking=no"
 
-          # Copy files
-          echo "📁 Copying files..."
-          rsync -av --exclude='.git' $GITHUB_WORKSPACE/ $DEPLOY_DIR/
+          # Clone or pull
+          if [ -d "$DEPLOY_DIR/.git" ]; then
+            echo "🔄 Pulling latest changes..."
+            cd $DEPLOY_DIR
+            git pull $REPO_URL main
+          else
+            echo "📥 Cloning repository..."
+            mkdir -p $DEPLOY_DIR
+            git clone $REPO_URL $DEPLOY_DIR
+          fi
 
           # Deploy
           cd $DEPLOY_DIR
