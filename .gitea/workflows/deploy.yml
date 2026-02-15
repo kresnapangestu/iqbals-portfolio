@@ -7,34 +7,36 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Copy files to deploy directory
+      - name: Deploy to Production
         run: |
+          set -e
+
           DEPLOY_DIR=/home/pangestu/srv/portfolio
 
-          echo "📦 Copying files..."
+          echo "📦 Deploying to $DEPLOY_DIR..."
+
+          # Create directory
           mkdir -p $DEPLOY_DIR
 
-          # Copy all files from checkout
-          cp -r ./* $DEPLOY_DIR/
-          cp -r ./.gitea $DEPLOY_DIR/ 2>/dev/null || true
+          # Copy files
+          echo "📁 Copying files..."
+          rsync -av --exclude='.git' $GITHUB_WORKSPACE/ $DEPLOY_DIR/
 
-          echo "✅ Files copied!"
+          # Deploy
+          cd $DEPLOY_DIR
 
-      - name: Deploy with Docker
-        run: |
-          cd /home/pangestu/srv/portfolio
-
-          echo "🐳 Building..."
+          echo "🐳 Building Docker image..."
           docker compose down || true
           docker compose build --no-cache
 
-          echo "🚀 Starting..."
+          echo "🚀 Starting container..."
           docker compose up -d
 
-          echo "✅ Deployed!"
+          echo "✅ Deployment complete!"
+          echo "🌐 Live at: https://kresnapangestu.com"
