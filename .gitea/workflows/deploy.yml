@@ -1,0 +1,47 @@
+name: Deploy Portfolio
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to Production
+        run: |
+          set -e  # Exit on error
+
+          DEPLOY_DIR=/home/pangestu/srv/portfolio
+          REPO_URL=git@localhost:kresnapangestu/iqbals-portfolio.git
+
+          echo "📦 Deploying to $DEPLOY_DIR..."
+
+          # Create deploy directory
+          mkdir -p $DEPLOY_DIR
+          cd $DEPLOY_DIR
+
+          # Setup Git SSH
+          export GIT_SSH_COMMAND="ssh -i /home/pangestu/.ssh/gitea-deploy -p 222 -o StrictHostKeyChecking=no"
+
+          # Clone or pull
+          if [ -d ".git" ]; then
+            echo "🔄 Pulling latest changes..."
+            git pull $REPO_URL main
+          else
+            echo "📥 Cloning repository..."
+            git clone $REPO_URL .
+          fi
+
+          # Build and deploy
+          echo "🐳 Building Docker image..."
+          docker compose down 2>/dev/null || true
+          docker compose build --no-cache
+
+          echo "🚀 Starting container..."
+          docker compose up -d
+
+          echo "✅ Deployment complete!"
+          echo "🌐 Live at: https://kresnapangestu.com"
