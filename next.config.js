@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-}
+  swcMinify: true, // Skip font optimization during build
+  optimizeFonts: false,
 
-module.exports = nextConfig
+  // Or use experimental flag
+  experimental: {
+    fontLoaders: [],
+  },
+};
+
+module.exports = nextConfig;

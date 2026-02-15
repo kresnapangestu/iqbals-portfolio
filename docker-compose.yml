@@ -1,6 +1,9 @@
 services:
   portfolio:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
     container_name: portfolio
     restart: unless-stopped
     networks:
