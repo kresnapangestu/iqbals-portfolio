@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { DM_Sans } from "next/font/google";
 import { diffInYearsMonths } from "../helpers";
 
 export const WorksDetail = [
@@ -131,23 +130,6 @@ export const WorksDetail = [
     tools: ["Next JS", "Tailwind CSS", "Javascript", "Figma"],
   },
   {
-    place: "Ourinvitation.id",
-    caption: "Front-end Developer (Freelance)",
-
-    duration: "September 2021 – February 2022",
-    realDuration: diffInYearsMonths("September 2021", "February 2022"),
-    desc: (
-      <p>
-        Helping team to developed A web-based online wedding invitation
-        application using Atomic Design. Also, helping the team migrate apps
-        from CRA & SCSS to Next JS & Tailwind because the needs of server side
-        feature of Next JS. Developed landing page and over 3 themes of wedding
-        invitation that was designed by UI/UX team.
-      </p>
-    ),
-    tools: ["React JS", "Next JS", "SCSS", "Tailwind CSS"],
-  },
-  {
     place: "Qtasnim",
     caption: "Front-end Developer (Part-time)",
 
@@ -207,11 +189,8 @@ export const ProjectList = [
     image: "/images/oilmart.webp",
     tools: ["Figma"],
     caption: (
-      <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
-          Oil Mart
-        </span>{" "}
-        <br></br>
+      <a>
+        <span style={{ fontSize: 28 }}>Oil Mart</span> <br></br>
         <br></br>
         Oil Mart is a device application (Tab only) built to support cashier
         work and find out the point of sales of a shop that sells various types
@@ -227,11 +206,8 @@ export const ProjectList = [
     image: "/images/xl.webp",
     tools: ["React JS", "Fusion Chart"],
     caption: (
-      <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
-          XL Axiata PMT/CMT
-        </span>{" "}
-        <br></br>
+      <a>
+        <span style={{ fontSize: 28 }}>XL Axiata PMT/CMT</span> <br></br>
         <br></br>
         XL AXIATA PMT/CMT is a web-based application built with the aim to be a
         Service Operation Center. The information provided is displayed in the
@@ -247,11 +223,8 @@ export const ProjectList = [
     image: "/images/masukbersama_exam.webp",
     tools: ["Figma", "Next JS", "Tailwind CSS"],
     caption: (
-      <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
-          MasukBersama
-        </span>{" "}
-        <br></br>
+      <a>
+        <span style={{ fontSize: 28 }}>MasukBersama</span> <br></br>
         <br></br>
         Masukbersama is a dual platform application (mobile and website based
         application), which was built with the aim of helping high school
@@ -268,11 +241,8 @@ export const ProjectList = [
     image: "/images/sama_landingpage.webp",
     tools: ["Figma", "Next JS", "Tailwind CSS"],
     caption: (
-      <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
-          Sama Landing Page
-        </span>{" "}
-        <br></br>
+      <a>
+        <span style={{ fontSize: 28 }}>Sama Landing Page</span> <br></br>
         <br></br>A single web page to elevate brand awareness of the growing
         software house by showing information like our portfolio. Other that
         this landing page is built to generate call-to-action from customer to
@@ -288,11 +258,8 @@ export const ProjectList = [
     image: "/images/ourinvitation.webp",
     tools: ["React JS", "SCSS", "Next JS", "Tailwind CSS"],
     caption: (
-      <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
-          Ourinvitation.id
-        </span>{" "}
-        <br></br>
+      <a>
+        <span style={{ fontSize: 28 }}>Ourinvitation.id</span> <br></br>
         <br></br>
         OurInvitation is an online invitation application created with the aim
         of providing a cheaper, more efficient, and environmentally friendly
@@ -309,11 +276,8 @@ export const ProjectList = [
     image: "/images/bki.webp",
     tools: ["React JS", "Formik"],
     caption: (
-      <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
-          myBKI
-        </span>{" "}
-        <br></br>
+      <a>
+        <span style={{ fontSize: 28 }}>myBKI</span> <br></br>
         <br></br>
         myBKI is a web-based application built with the aim to be a Service
         Operation Center. The information provided is displayed in the form of
@@ -329,11 +293,8 @@ export const ProjectList = [
     image: "/images/mubarokulhuda.webp",
     tools: ["Figma", "React JS"],
     caption: (
-      <a className={dmsans.className}>
-        <span className={dmsans_bold.className} style={{ fontSize: 28 }}>
-          SPP Mubarokulhuda
-        </span>{" "}
-        <br></br>
+      <a>
+        <span style={{ fontSize: 28 }}>SPP Mubarokulhuda</span> <br></br>
         <br></br>
         SM (Spp Mubarokulhuda) is a cross-platform application created to help
         parents and the administration of the Madrasah Mubarokulhuda. The
@@ -348,13 +309,3 @@ export const ProjectList = [
     open: "https://sppmubarokulhuda.netlify.app",
   },
 ];
-
-const dmsans_bold = DM_Sans({
-  weight: "700",
-  subsets: ["latin"],
-});
-
-const dmsans = DM_Sans({
-  weight: "400",
-  subsets: ["latin"],
-});

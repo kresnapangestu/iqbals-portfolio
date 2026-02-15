@@ -4,6 +4,7 @@ export default function Chip(props) {
   return (
     <Grid style={{ margin: props.margin }}>
       <a
+        className={`hover:text-yellow-300 border border-white hover:border-yellow-300`}
         target="_blank"
         href={props.href}
         rel="noopener noreferrer"
@@ -11,7 +12,6 @@ export default function Chip(props) {
           fontSize: `${props.fontSize || "18px"}`,
           padding: "3px 20px",
           color: `${props.textColor}`,
-          border: `solid 1px ${props.borderColor}`,
           background: `${props.background}`,
           borderRadius: "20px",
         }}

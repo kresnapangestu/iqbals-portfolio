@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import styles from "../../styles/Home.module.css";
 import { Grid, Button, Menu, MenuItem, Divider } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Chip from "./Atoms/Chip";
@@ -50,6 +49,7 @@ export default function Navbar(props) {
             }}
           >
             <Link
+              className="text-white hover:text-yellow-300"
               href="#about"
               on
               style={{
@@ -60,6 +60,7 @@ export default function Navbar(props) {
               About
             </Link>
             <Link
+              className="text-white hover:text-yellow-300"
               href="#works"
               on
               style={{
@@ -70,6 +71,7 @@ export default function Navbar(props) {
               Work
             </Link>
             <Link
+              className="text-white hover:text-yellow-300"
               href="#project"
               style={{
                 fontSize: 18,

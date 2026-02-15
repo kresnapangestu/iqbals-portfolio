@@ -4,24 +4,12 @@ import Chip from "../components/Atoms/Chip";
 import { Grid } from "@mui/material";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
-import { DM_Sans } from "next/font/google";
 import { Carousel } from "react-responsive-carousel";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 
 import { Code, Launch } from "@mui/icons-material";
 import { ProjectList } from "../../constants";
-
-const dmsans_bold = DM_Sans({
-  weight: "700",
-  subsets: ["latin"],
-});
-
-const dmsans = DM_Sans({
-  weight: "400",
-  subsets: ["latin"],
-});
 
 export default function Projects(props) {
   return (
@@ -34,7 +22,7 @@ export default function Projects(props) {
       }}
     >
       <span
-        className={dmsans_bold.className + " " + styles.header_2}
+        className="font-semibold text-4xl"
         style={{
           borderRadius: "30px",
           textAlign: "center",
@@ -45,7 +33,6 @@ export default function Projects(props) {
         My Projects
       </span>
       <div
-        className={dmsans.className}
         style={{
           margin: props.isMobile ? "5% 0" : "2% 0",
           textAlign: "-webkit-center",
@@ -92,7 +79,6 @@ export default function Projects(props) {
                 />
                 {data.code && (
                   <a
-                    className={dmsans_bold.className}
                     style={{
                       fontSize: 20,
                       margin: props.isMobile ? "5%" : "2%",
@@ -106,7 +92,7 @@ export default function Projects(props) {
                 )}
                 {data.open && (
                   <a
-                    className={dmsans_bold.className + " " + styles.header_2}
+                    className={styles.header_2}
                     style={{
                       margin: props.isMobile ? "10% 0 0 0" : "2% 2% 2% 0",
                     }}
@@ -123,7 +109,7 @@ export default function Projects(props) {
         </Carousel>
       </div>
       <a
-        className={dmsans_bold.className + " " + styles.header_3}
+        className={styles.header_3}
         target="_blank"
         href="https://drive.google.com/file/d/13ARBqooRlTh4BOMDtfqeWcG0Pq_VL3tA/view?usp=sharing"
         rel="noopener noreferrer"

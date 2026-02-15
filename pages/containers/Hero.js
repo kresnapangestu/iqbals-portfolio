@@ -1,13 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import styles from "../../styles/Home.module.css";
-
-import { DM_Sans } from "next/font/google";
-
-const dmsans_bold = DM_Sans({
-  weight: "500",
-  subsets: ["latin"],
-});
 
 export default function Hero(props) {
   const [index, setIndex] = useState(0);
@@ -64,19 +56,21 @@ export default function Hero(props) {
         , My Name is
       </span>
       <br></br>
-      <span
-        className={dmsans_bold.className}
+      <h1
+        className="font-semibold"
         style={{
           fontSize: props.isMobile ? 32 : 62,
+          marginBottom: 0,
         }}
       >
         Mohammad Iqbal Kresna Pangestu. <br></br>Front-end Website Developer{" "}
         <br></br>
         Based in Bandung & Jakarta.
-      </span>
+      </h1>
       <br></br>
       <br></br>
       <span
+        className="font-light"
         style={{
           fontSize: props.isMobile ? 20 : 32,
         }}

@@ -5,18 +5,7 @@ import { Tabs, Tab, Typography, Box, Grid } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material";
 
 import styles from "../../styles/Home.module.css";
-import { DM_Sans } from "next/font/google";
 import { WorksDetail } from "../../constants";
-
-const dmsans_bold = DM_Sans({
-  weight: "700",
-  subsets: ["latin"],
-});
-
-const dmsans = DM_Sans({
-  weight: "400",
-  subsets: ["latin"],
-});
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -80,11 +69,8 @@ export default function Works(props) {
           },
         })}
       >
-        <span className={dmsans_bold.className + " " + styles.header_2}>
-          I have worked for
-        </span>
+        <span className="font-semibold text-4xl">I have worked for</span>
         <div
-          className={dmsans.className}
           style={{
             flexGrow: 1,
             display: "flex",
@@ -128,7 +114,7 @@ export default function Works(props) {
                 }}
               >
                 <span
-                  className={dmsans_bold.className}
+                  className="font-semibold text-lg"
                   style={{
                     fontSize: props.isMobile ? 16 : 20,
                   }}
@@ -136,7 +122,6 @@ export default function Works(props) {
                   {data.caption}
                 </span>
                 <span
-                  className={dmsans_bold.className}
                   style={{ opacity: 0.5, fontSize: props.isMobile ? 15 : 20 }}
                 >
                   {data.duration} &nbsp;({data.realDuration})
@@ -155,7 +140,7 @@ export default function Works(props) {
           ))}
         </div>
         <a
-          className={dmsans_bold.className + " " + styles.header_3}
+          className={styles.header_3}
           target="_blank"
           href="https://drive.google.com/file/d/1L3fYJ6l0HqCEghL-NSohQ8kiPIZ72QOG/view?usp=sharing"
           rel="noopener noreferrer"
