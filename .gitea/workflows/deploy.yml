@@ -10,38 +10,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to Production
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy files to deploy directory
         run: |
-          set -e  # Exit on error
-
           DEPLOY_DIR=/home/pangestu/srv/portfolio
-          REPO_URL=git@localhost:kresnapangestu/iqbals-portfolio.git
 
-          echo "📦 Deploying to $DEPLOY_DIR..."
-
-          # Create deploy directory
+          echo "📦 Copying files..."
           mkdir -p $DEPLOY_DIR
-          cd $DEPLOY_DIR
 
-          # Setup Git SSH
-          export GIT_SSH_COMMAND="ssh -i /home/pangestu/.ssh/gitea-deploy -p 222 -o StrictHostKeyChecking=no"
+          # Copy all files from checkout
+          cp -r ./* $DEPLOY_DIR/
+          cp -r ./.gitea $DEPLOY_DIR/ 2>/dev/null || true
 
-          # Clone or pull
-          if [ -d ".git" ]; then
-            echo "🔄 Pulling latest changes..."
-            git pull $REPO_URL main
-          else
-            echo "📥 Cloning repository..."
-            git clone $REPO_URL .
-          fi
+          echo "✅ Files copied!"
 
-          # Build and deploy
-          echo "🐳 Building Docker image..."
-          docker compose down 2>/dev/null || true
+      - name: Deploy with Docker
+        run: |
+          cd /home/pangestu/srv/portfolio
+
+          echo "🐳 Building..."
+          docker compose down || true
           docker compose build --no-cache
 
-          echo "🚀 Starting container..."
+          echo "🚀 Starting..."
           docker compose up -d
 
-          echo "✅ Deployment complete!"
-          echo "🌐 Live at: https://kresnapangestu.com"
+          echo "✅ Deployed!"
