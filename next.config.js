@@ -15,8 +15,14 @@ const nextConfig = {
   output: process.env.NETLIFY ? undefined : "standalone",
 
   images: {
-    // AVIF first, WebP as the fallback. Typically 20-30% smaller than WebP
-    // alone on the screenshots this site is mostly made of.
+    // Staging on Netlify serves the original files straight from /public and
+    // skips the optimizer. `/_next/image` only exists when a Next.js server
+    // runtime is wired up, and when it is not, every image 404s while the rest
+    // of the page renders fine. Staging does not need optimized images, and
+    // this removes the dependency instead of debugging it.
+    unoptimized: Boolean(process.env.NETLIFY),
+
+    // Production (self-hosted) keeps the optimizer. AVIF first, WebP fallback.
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 31536000,
   },

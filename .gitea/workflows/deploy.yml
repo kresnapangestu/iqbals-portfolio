@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+  # A pull mirror updates refs without emitting a push event, so syncing from
+  # GitHub does not fire the trigger above. This lets the deploy be started by
+  # hand from the Actions tab after a sync.
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -22,11 +26,19 @@ jobs:
           # Setup Git SSH
           export GIT_SSH_COMMAND="ssh -i /home/pangestu/.ssh/gitea-deploy -p 222 -o StrictHostKeyChecking=no"
 
-          # Clone or pull
+          # Clone, or fetch and reset to exactly match the remote.
+          #
+          # `git pull` merges, which is wrong for a deploy directory: it can
+          # report success while leaving the working tree on a diverged or
+          # detached state, and after a rename-heavy commit it can leave both
+          # the old and the new file in place (for example pages/index.js
+          # alongside pages/index.tsx, where Next.js then builds the wrong one).
+          # A hard reset makes the checkout identical to the remote every time.
           if [ -d "$DEPLOY_DIR/.git" ]; then
-            echo "🔄 Pulling latest changes..."
+            echo "🔄 Fetching latest changes..."
             cd $DEPLOY_DIR
-            git pull $REPO_URL main
+            git fetch $REPO_URL main
+            git reset --hard FETCH_HEAD
           else
             echo "📥 Cloning repository..."
             mkdir -p $DEPLOY_DIR
@@ -35,6 +47,9 @@ jobs:
 
           # Deploy
           cd $DEPLOY_DIR
+
+          echo "📌 Deploying commit: $(git rev-parse --short HEAD)"
+          git --no-pager log -1 --pretty='   %s (%an, %ar)'
 
           echo "🐳 Building Docker image..."
           docker compose down || true
