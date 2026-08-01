@@ -5,9 +5,14 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
 
-  // Ships a minimal server bundle instead of the whole node_modules tree,
-  // which is what the production Docker image copies.
-  output: "standalone",
+  // Standalone output is for the self-hosted Docker image, which copies
+  // `.next/standalone` instead of the whole node_modules tree.
+  //
+  // Netlify must NOT get it. Netlify's Next.js Runtime does its own bundling,
+  // and when `standalone` is set it never wires up the `/_next/image`
+  // optimizer endpoint. Pages still render from static HTML, so the only
+  // visible symptom is that every `next/image` is blank.
+  output: process.env.NETLIFY ? undefined : "standalone",
 
   images: {
     // AVIF first, WebP as the fallback. Typically 20-30% smaller than WebP
