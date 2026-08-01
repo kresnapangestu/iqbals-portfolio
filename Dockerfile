@@ -11,11 +11,17 @@ RUN npm run build
 FROM node:20-alpine
 
 WORKDIR /app
-COPY --from=builder /app/.next ./.next
+ENV NODE_ENV=production
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
+
+# `output: "standalone"` emits a self-contained server with only the modules it
+# actually imports, so the full node_modules tree is never copied. Static assets
+# and /public are not bundled into it and must be placed alongside.
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["node", "server.js"]

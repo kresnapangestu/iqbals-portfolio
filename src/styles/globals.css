@@ -1,0 +1,45 @@
+@import "./fonts.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Anchor targets clear the fixed header. */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface font-sans text-ink antialiased;
+    /* Nothing in the layout is wider than the viewport; this makes that a rule. */
+    overflow-x: hidden;
+  }
+
+  /* Consistent, visible focus for anything the browser focuses. */
+  :focus-visible {
+    outline: 2px solid theme("colors.accent.ink");
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    @apply bg-accent text-ink;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

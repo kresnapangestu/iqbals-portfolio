@@ -17,7 +17,28 @@
 
 # misc
 .DS_Store
+._*
 *.pem
+
+# AI agent tooling and generated artefacts.
+# None of this belongs in a deployed site or a public repository.
+/.agents
+/.claude
+/.impeccable
+/.cursor
+/.windsurf
+/.aider*
+/graphify-out
+/skills-lock.json
+/CLAUDE.md
+
+# Internal product strategy. Names the audience, the conversion goal, and
+# current job-search status, so it stays out of the public repository.
+/PRODUCT.md
+
+# Working files
+/commit.md
+/product-example-page.png
 
 # debug
 npm-debug.log*
