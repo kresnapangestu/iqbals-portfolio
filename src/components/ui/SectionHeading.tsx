@@ -41,10 +41,12 @@ export function SectionHeading({
       </h2>
       <span
         aria-hidden
+        // `min-w-6`: at 320px the longest heading wraps and leaves the rule no
+        // room at all, so it disappears on that one heading and not the others.
         className={
           isInverse
-            ? "h-px flex-1 bg-line-inverse"
-            : "h-px flex-1 bg-line"
+            ? "h-px min-w-6 flex-1 bg-line-inverse"
+            : "h-px min-w-6 flex-1 bg-line"
         }
       />
     </div>

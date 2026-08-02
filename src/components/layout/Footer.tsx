@@ -23,7 +23,7 @@ export function Footer() {
 
           <ul
             aria-label="Social profiles"
-            className="mt-8 flex justify-center gap-6 lg:hidden"
+            className="mt-8 flex justify-center gap-6 rail:hidden"
           >
             {socialLinks.map((link) => (
               <li key={link.label}>

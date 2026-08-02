@@ -65,7 +65,9 @@ export function Navbar({ activeSection }: NavbarProps) {
               href={item.href}
               aria-current={activeSection === item.id ? "true" : undefined}
               className={cn(
-                "rounded-sm text-fluid-sm transition-colors duration-200 ease-smooth",
+                // `py-2 -my-2`: a 24px-tall text link is the bare minimum on a
+                // touch tablet, and the negative margin keeps the bar's height.
+                "rounded-sm py-2 -my-2 text-fluid-sm transition-colors duration-200 ease-smooth",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-inverse",
                 activeSection === item.id
                   ? "text-accent"

@@ -140,18 +140,20 @@ export default function ProjectDetailPage({
         <div className="mx-auto max-w-content px-gutter">
           <nav
             aria-label="Breadcrumb"
-            className="flex flex-wrap items-center gap-x-2 gap-y-1 py-6 text-fluid-xs text-ink-muted"
+            // `gap-y-3` rather than `gap-y-1`: the links below carry vertical
+            // padding for a usable touch target, so wrapped rows need the room.
+            className="flex flex-wrap items-center gap-x-2 gap-y-3 py-6 text-fluid-xs text-ink-muted"
           >
             <Link
               href="/#projects"
-              className="rounded-sm underline-offset-4 hover:text-ink hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
+              className="rounded-sm py-1.5 -my-1.5 underline-offset-4 hover:text-ink hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
             >
               Home
             </Link>
             <span aria-hidden>/</span>
             <Link
               href="/#projects"
-              className="rounded-sm underline-offset-4 hover:text-ink hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
+              className="rounded-sm py-1.5 -my-1.5 underline-offset-4 hover:text-ink hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
             >
               Projects
             </Link>
@@ -163,8 +165,11 @@ export default function ProjectDetailPage({
         </div>
 
         <div className="mx-auto grid max-w-content gap-x-14 gap-y-12 px-gutter pb-20 lg:grid-cols-[minmax(0,1fr)_21rem] lg:items-start">
-          {/* Info rail — sticky on desktop, inline above the fold on mobile. */}
-          <aside className="lg:sticky lg:top-28 lg:col-start-2 lg:row-start-1">
+          {/* Info rail — sticky on desktop, inline above the fold on mobile.
+              The height cap matters on short landscape viewports: without it a
+              pinned rail taller than the viewport puts its own buttons below
+              the fold with no way to scroll to them. */}
+          <aside className="lg:sticky lg:top-28 lg:col-start-2 lg:row-start-1 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
             {attribution && (
               <p className="text-fluid-xs uppercase tracking-widest text-ink-subtle">
                 {attribution}

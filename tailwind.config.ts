@@ -12,6 +12,13 @@ const config: Config = {
   content: ["./src/**/*.{ts,tsx}", "./pages/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      // The fixed social rail and email sit in the viewport gutters, so they may
+      // only appear once the viewport is wider than the content column plus the
+      // room both rails need. Below this they would sit on top of the content.
+      screens: {
+        rail: "1440px",
+      },
+
       colors: {
         ink: {
           DEFAULT: "#0B0B0B",

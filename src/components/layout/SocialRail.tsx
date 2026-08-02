@@ -8,11 +8,13 @@ import { siteConfig, socialLinks } from "@/data/site";
  * section is behind it: the rail crosses the light/dark boundary mid-scroll, and
  * blending stays legible through the transition instead of snapping a beat late.
  *
- * Hidden below `lg` because the footer already carries the same links.
+ * Hidden below `rail` because the footer already carries the same links, and
+ * because narrower viewports have no gutter to spare: the content column runs
+ * the full width there, so a fixed rail would sit on top of it.
  */
 export function SocialRail() {
   return (
-    <div className="pointer-events-none hidden text-white mix-blend-difference lg:block">
+    <div className="pointer-events-none hidden text-white mix-blend-difference rail:block">
       <ul
         aria-label="Social profiles"
         className="pointer-events-auto fixed bottom-0 left-gutter z-40 flex flex-col items-center gap-5 after:h-24 after:w-px after:bg-current after:opacity-40"
@@ -35,7 +37,9 @@ export function SocialRail() {
       <div className="pointer-events-auto fixed bottom-0 right-gutter z-40 flex flex-col items-center gap-5 after:h-24 after:w-px after:bg-current after:opacity-40">
         <a
           href={`mailto:${siteConfig.email}`}
-          className="rounded-sm text-fluid-xs tracking-widest [writing-mode:vertical-rl]"
+          // `px-1.5 -mx-1.5` widens the hit area of the vertical text without
+          // moving it off the rail's centre line.
+          className="rounded-sm px-1.5 -mx-1.5 text-fluid-xs tracking-widest [writing-mode:vertical-rl]"
         >
           {siteConfig.email}
         </a>

@@ -13,6 +13,31 @@ import type { Project } from "@/types";
  */
 export const projectItems: readonly Project[] = [
   {
+    id: "sentinel",
+    name: "Sentinel",
+    summary:
+      "A telecom KPI monitoring system that flags anomalies in network time series, built as thesis research: Z-Score for univariate detection and Isolation Forest for multivariate.",
+    contribution:
+      "Built the whole system: the Next.js dashboard, the NestJS gateway that owns database access, and the FastAPI service holding the detection algorithms.",
+    imageSrc: "/images/sentinel_login.webp",
+    technologies: [
+      "Next.js",
+      "Tailwind CSS",
+      "ECharts",
+      "NestJS",
+      "Prisma",
+      "PostgreSQL",
+      "FastAPI",
+      "scikit-learn",
+    ],
+    // Dates from the project's own commit history (first commit May 2025, most
+    // recent March 2026). Not publicly deployed, so no `url`.
+    role: "Full-stack Developer",
+    year: "2025 – 2026",
+    problem:
+      "Network KPI degradation hides in thousands of time-series points, and reviewing charts by hand catches it late — if at all.",
+  },
+  {
     id: "xl-axiata",
     name: "XL Axiata PMT/CMT",
     summary:
@@ -85,24 +110,6 @@ export const projectItems: readonly Project[] = [
       "Operational and classification data was spread across systems, leaving no single view for the teams that had to act on it.",
   },
   {
-    id: "sama-landing",
-    name: "Sama Landing Page",
-    summary:
-      "A single-page site raising brand awareness for a growing software house and driving customer enquiries.",
-    contribution: "Designed and developed the landing page with the team.",
-    imageSrc: "/images/sama_landingpage.webp",
-    technologies: ["Next.js", "Tailwind CSS", "Figma"],
-    // Former URL https://samabandung.vercel.app now returns 404 — removed so the
-    // page shows "Not publicly available" rather than a broken link. Restore
-    // when a live URL exists.
-    // INFERRED from experience.ts (Sama, July 2022 – February 2023).
-    company: "Sama",
-    role: "Front-end Developer & UI/UX Designer",
-    year: "2022 – 2023",
-    problem:
-      "A growing software house needed a public face that showed its portfolio and turned interest into enquiries.",
-  },
-  {
     id: "mubarokulhuda",
     name: "SPP Mubarokulhuda",
     summary:
@@ -117,24 +124,6 @@ export const projectItems: readonly Project[] = [
     role: "Front-end Developer & UI/UX Designer",
     problem:
       "Parents and school administrators were tracking tuition payments and arrears by hand, with no shared record either side could rely on.",
-  },
-  {
-    id: "oilmart",
-    name: "Oil Mart",
-    summary:
-      "A tablet point-of-sale application for a shop selling multiple grades of oil, built to keep cashier work fast and simple.",
-    contribution: "Designed the interface and the application’s design concept.",
-    imageSrc: "/images/oilmart.webp",
-    technologies: ["Figma"],
-    // Former Google Drive link returns 404 — removed so the page shows
-    // "Not publicly available" rather than a broken link.
-    // INFERRED from experience.ts (Sama, July 2022 – February 2023), which names
-    // the Oil Mart cashier app as design work.
-    company: "Sama",
-    role: "UI/UX Designer",
-    year: "2022 – 2023",
-    problem:
-      "Cashiers needed to find the right product among many grades of oil and complete a sale quickly on a tablet.",
   },
 ];
 

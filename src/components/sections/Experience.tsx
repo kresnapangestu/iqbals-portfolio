@@ -149,7 +149,9 @@ export function Experience() {
           href={siteConfig.resumeUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-12 inline-block rounded-sm text-fluid-sm font-medium text-ink underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
+          // `py-2 -my-2` grows the touch target to ~40px without moving the
+          // link: the negative margin cancels the padding in the layout.
+          className="mt-12 inline-block rounded-sm py-2 -my-2 text-fluid-sm font-medium text-ink underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
         >
           View full resume →
         </a>
