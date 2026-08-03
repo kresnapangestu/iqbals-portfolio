@@ -1,9 +1,13 @@
 import Image from "next/image";
 
+import { RichText } from "@/components/ui/RichText";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/data/site";
+import { useTranslation } from "@/i18n/LocaleProvider";
 
 export function About() {
+  const t = useTranslation();
+
   return (
     <section
       id="about"
@@ -14,7 +18,7 @@ export function About() {
         <SectionHeading
           id="about-heading"
           index="01"
-          title="About"
+          title={t.about.heading}
           tone="inverse"
         />
 
@@ -22,7 +26,7 @@ export function About() {
           <div className="relative mx-auto aspect-square w-48 overflow-hidden rounded-card sm:w-64 md:mx-0 md:w-full md:max-w-sm">
             <Image
               src="/images/profile_picture.png"
-              alt={`Portrait of ${siteConfig.name}`}
+              alt={t.meta.portraitAlt(siteConfig.name)}
               fill
               sizes="(min-width: 768px) 24rem, 16rem"
               className="object-cover"
@@ -30,37 +34,11 @@ export function About() {
           </div>
 
           <div className="space-y-5 text-fluid-base text-white/75">
-            <p>
-              An early interest in computers led me to study computer science at{" "}
-              <span className="text-white">Politeknik Negeri Bandung</span>,
-              where I fell into web development and stayed. Since then I&apos;ve
-              built software for a software house and for a large corporation.
-            </p>
-            <p>
-              My focus now is building well-designed, easy-to-use products at{" "}
-              <span className="text-white">Huawei Tech Investment</span> as a
-              front-end developer.
-            </p>
-            <p>
-              Outside front-end work I&apos;m exploring networking, CI/CD
-              pipelines, and homelab infrastructure. This site is one of those
-              experiments: it runs on a server I built from a repurposed 2013
-              laptop, deployed from my own Git runner.
-            </p>
-            <p>
-              Away from the keyboard I&apos;m usually at a local coffee shop,
-              gaming with friends, playing tennis with my club or my friends, or
-              working through a playlist on{" "}
-              <a
-                href={siteConfig.spotifyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-sm text-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-inverse"
-              >
-                Spotify
-              </a>
-              .
-            </p>
+            {t.about.paragraphs.map((paragraph, index) => (
+              <p key={index}>
+                <RichText parts={paragraph} tone="inverse" />
+              </p>
+            ))}
           </div>
         </div>
       </div>

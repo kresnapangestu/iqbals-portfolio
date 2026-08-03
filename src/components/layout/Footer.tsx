@@ -1,14 +1,17 @@
 import { SocialIcon } from "@/components/ui/SocialIcon";
 import { siteConfig, socialLinks } from "@/data/site";
+import { useTranslation } from "@/i18n/LocaleProvider";
 
 export function Footer() {
+  const t = useTranslation();
+
   return (
     // No top padding: the preceding section already ends on the section rhythm.
     <footer className="bg-surface px-gutter pb-12 pt-16">
       <div className="mx-auto max-w-content">
         <div className="rounded-card bg-surface-inverse px-gutter py-12 text-center sm:py-16">
           <p className="text-fluid-lg font-medium text-white">
-            Have something you need built?
+            {t.footer.prompt}
           </p>
           <a
             href={`mailto:${siteConfig.email}`}
@@ -17,12 +20,11 @@ export function Footer() {
             {siteConfig.email}
           </a>
           <p className="mx-auto mt-4 max-w-md text-fluid-sm text-white/60">
-            Open to possibilities. A short outline of the work and your timeline
-            is enough to start a conversation.
+            {t.footer.note}
           </p>
 
           <ul
-            aria-label="Social profiles"
+            aria-label={t.a11y.socialProfiles}
             className="mt-8 flex justify-center gap-6 rail:hidden"
           >
             {socialLinks.map((link) => (
@@ -42,7 +44,7 @@ export function Footer() {
         </div>
 
         <p className="mt-8 text-center text-fluid-xs text-ink-muted">
-          Designed and built by {siteConfig.name}. Self-hosted with Next.js.
+          {t.footer.credit(siteConfig.name)}
         </p>
       </div>
     </footer>

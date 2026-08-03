@@ -1,7 +1,8 @@
 import { experienceData } from "@/data/experience";
-import { projectItems } from "@/data/projects";
+import { projectItems, type ProjectEntry } from "@/data/projects";
 import { siteConfig, socialLinks } from "@/data/site";
-import type { Project } from "@/types";
+import type { Dictionary, Locale } from "@/i18n";
+import { localeConfig, projectCopy } from "@/i18n";
 
 /** Every technology named anywhere in the content, deduplicated. */
 function knownTechnologies(): string[] {
@@ -17,9 +18,10 @@ function knownTechnologies(): string[] {
  *
  * This is the record a search engine reads to connect the name to the person,
  * so it carries employer, education, location, and profiles rather than the
- * bare minimum. Every value comes from content already on the site.
+ * bare minimum. Every value comes from content already on the site, in the
+ * language that content is currently being shown in.
  */
-export function buildPersonSchema() {
+export function buildPersonSchema(t: Dictionary) {
   const currentRole = experienceData[0];
 
   return {
@@ -30,8 +32,8 @@ export function buildPersonSchema() {
     alternateName: siteConfig.shortName,
     url: siteConfig.url,
     image: `${siteConfig.url}/images/profile_picture.png`,
-    jobTitle: siteConfig.role,
-    description: siteConfig.description,
+    jobTitle: t.meta.jobTitle,
+    description: t.meta.description,
     email: `mailto:${siteConfig.email}`,
     address: {
       "@type": "PostalAddress",
@@ -57,21 +59,22 @@ export function buildPersonSchema() {
 }
 
 /** Website schema, so the site itself is a named entity alongside the person. */
-export function buildWebSiteSchema() {
+export function buildWebSiteSchema(t: Dictionary, locale: Locale) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${siteConfig.url}/#website`,
     url: siteConfig.url,
-    name: `${siteConfig.name} portfolio`,
-    inLanguage: "en",
+    name: t.meta.siteName(siteConfig.name),
+    inLanguage: localeConfig[locale].htmlLang,
     publisher: { "@id": `${siteConfig.url}/#person` },
   };
 }
 
 /** Per-project schema plus its breadcrumb trail. */
-export function buildProjectSchema(project: Project) {
+export function buildProjectSchema(project: ProjectEntry, t: Dictionary) {
   const projectUrl = `${siteConfig.url}/projects/${project.id}`;
+  const copy = projectCopy(t, project.id);
 
   return [
     {
@@ -79,11 +82,11 @@ export function buildProjectSchema(project: Project) {
       "@type": "CreativeWork",
       name: project.name,
       url: projectUrl,
-      description: project.summary,
+      description: copy.summary,
       image: `${siteConfig.url}${project.imageSrc}`,
       creator: { "@id": `${siteConfig.url}/#person` },
       keywords: project.technologies.join(", "),
-      ...(project.year ? { dateCreated: project.year } : {}),
+      ...(copy.year ? { dateCreated: copy.year } : {}),
     },
     {
       "@context": "https://schema.org",
@@ -92,13 +95,13 @@ export function buildProjectSchema(project: Project) {
         {
           "@type": "ListItem",
           position: 1,
-          name: "Home",
+          name: t.projectDetail.home,
           item: siteConfig.url,
         },
         {
           "@type": "ListItem",
           position: 2,
-          name: "Projects",
+          name: t.projectDetail.projects,
           item: `${siteConfig.url}/#projects`,
         },
         { "@type": "ListItem", position: 3, name: project.name },

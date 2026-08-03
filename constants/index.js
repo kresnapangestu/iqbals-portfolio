@@ -203,13 +203,13 @@ export const ProjectList = [
     open: "https://drive.google.com/file/d/1zeSySQ1aKT8vQZHqWFRmqRJuQ-MGmvT4/view?usp=sharing",
   },
   {
-    image: "/images/xl.webp",
+    image: "/images/ui-pmt-cmt.webp",
     tools: ["React JS", "Fusion Chart"],
     caption: (
       <a>
-        <span style={{ fontSize: 28 }}>XL Axiata PMT/CMT</span> <br></br>
+        <span style={{ fontSize: 28 }}>XLSmart PMT/CMT</span> <br></br>
         <br></br>
-        XL AXIATA PMT/CMT is a web-based application built with the aim to be a
+        XLSmart PMT/CMT is a web-based application built with the aim to be a
         Service Operation Center. The information provided is displayed in the
         form of various types of charts, maps, and tables containing data needed
         by clients with high positions in the company. <br></br>

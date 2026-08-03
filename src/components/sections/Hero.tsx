@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 
+import { RichText } from "@/components/ui/RichText";
 import { heroGreetings, siteConfig } from "@/data/site";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { useTranslation } from "@/i18n/LocaleProvider";
 
 const GREETING_INTERVAL_MS = 3200;
 
 export function Hero() {
+  const t = useTranslation();
   const prefersReducedMotion = usePrefersReducedMotion();
   const [greetingIndex, setGreetingIndex] = useState(0);
 
@@ -37,7 +40,8 @@ export function Hero() {
         >
           {greeting}
         </span>
-        <span className="sr-only">Hello</span>, my name is
+        <span className="sr-only">{t.hero.greeting}</span>
+        {t.hero.introSuffix}
       </p>
 
       <h1
@@ -48,15 +52,11 @@ export function Hero() {
       </h1>
 
       <p className="mt-4 text-fluid-xl font-light text-ink-muted">
-        {siteConfig.role} based in {siteConfig.location}.
+        {t.hero.roleLine}
       </p>
 
       <p className="mt-8 max-w-prose text-fluid-base text-ink-muted">
-        I build operational dashboards and modernise legacy front-ends at{" "}
-        <span className="font-medium text-ink">Huawei Tech Investment</span>.
-        Over four years that work has covered more than 40 telecom analytics
-        dashboards used by over 500 people a day. I design a good share of what
-        I build, and I care about interfaces that stay readable under real data.
+        <RichText parts={t.hero.bio} />
       </p>
 
       <div className="mt-10 flex flex-wrap items-center gap-3">
@@ -64,7 +64,7 @@ export function Hero() {
           href="#projects"
           className="rounded-pill bg-ink px-6 py-3 text-fluid-sm font-medium text-white transition-colors duration-200 ease-smooth hover:bg-ink-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
         >
-          View selected work
+          {t.hero.ctaWork}
         </a>
         <a
           href={siteConfig.resumeUrl}
@@ -72,7 +72,7 @@ export function Hero() {
           rel="noopener noreferrer"
           className="rounded-pill border border-line px-6 py-3 text-fluid-sm font-medium text-ink transition-colors duration-200 ease-smooth hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
         >
-          View resume
+          {t.hero.ctaResume}
         </a>
       </div>
     </section>

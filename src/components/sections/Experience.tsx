@@ -4,8 +4,11 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TagList } from "@/components/ui/Tag";
 import { experienceData } from "@/data/experience";
 import { siteConfig } from "@/data/site";
+import { localeConfig } from "@/i18n";
+import { useLocale, useTranslation } from "@/i18n/LocaleProvider";
 import { cn } from "@/lib/cn";
 import { formatDuration } from "@/lib/duration";
+import { formatPeriod } from "@/lib/period";
 
 /** Moves focus and selection with the arrow keys, per the WAI-ARIA tabs pattern. */
 function nextIndexForKey(
@@ -30,6 +33,8 @@ function nextIndexForKey(
 }
 
 export function Experience() {
+  const t = useTranslation();
+  const { locale } = useLocale();
   const [selectedIndex, setSelectedIndex] = useState(0);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -50,6 +55,8 @@ export function Experience() {
 
   if (!selected) return null;
 
+  const copy = t.content.experience[selected.id];
+
   return (
     <section
       id="experience"
@@ -60,13 +67,13 @@ export function Experience() {
         <SectionHeading
           id="experience-heading"
           index="02"
-          title="Where I've worked"
+          title={t.experience.heading}
         />
 
         <div className="grid gap-8 md:grid-cols-[minmax(10rem,14rem)_minmax(0,1fr)] md:gap-12">
           <div
             role="tablist"
-            aria-label="Companies"
+            aria-label={t.experience.companiesLabel}
             aria-orientation="vertical"
             className={cn(
               "-mx-gutter flex snap-x gap-1 overflow-x-auto px-gutter pb-2",
@@ -113,7 +120,7 @@ export function Experience() {
             key={selected.id}
           >
             <h3 className="text-fluid-lg font-semibold tracking-tight text-ink">
-              {selected.role}
+              {copy.role}
               <span className="font-normal text-ink-muted">
                 {" "}
                 · {selected.company}
@@ -121,12 +128,23 @@ export function Experience() {
             </h3>
 
             <p className="mt-1 text-fluid-sm text-ink-muted">
-              {selected.employmentType} · {selected.period} ·{" "}
-              {formatDuration(selected.startedAt, selected.endedAt)}
+              {t.experience.employmentType[selected.employmentType]} ·{" "}
+              {formatPeriod(
+                selected.startedAt,
+                selected.endedAt,
+                localeConfig[locale].intlLocale,
+                t.experience.present,
+              )}{" "}
+              ·{" "}
+              {formatDuration(
+                selected.startedAt,
+                selected.endedAt,
+                t.experience.duration,
+              )}
             </p>
 
             <ul className="mt-6 space-y-3">
-              {selected.highlights.map((highlight) => (
+              {copy.highlights.map((highlight) => (
                 <li
                   key={highlight}
                   className="relative max-w-prose pl-6 text-fluid-base text-ink-muted before:absolute before:left-0 before:top-[0.7em] before:h-1.5 before:w-1.5 before:rounded-pill before:bg-accent-ink"
@@ -139,7 +157,7 @@ export function Experience() {
             <div className="mt-6">
               <TagList
                 items={selected.technologies}
-                label={`Technologies used at ${selected.company}`}
+                label={t.experience.technologiesAt(selected.company)}
               />
             </div>
           </div>
@@ -153,7 +171,7 @@ export function Experience() {
           // link: the negative margin cancels the padding in the layout.
           className="mt-12 inline-block rounded-sm py-2 -my-2 text-fluid-sm font-medium text-ink underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
         >
-          View full resume →
+          {t.experience.viewResume}
         </a>
       </div>
     </section>

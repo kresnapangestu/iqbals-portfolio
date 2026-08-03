@@ -1,15 +1,16 @@
 import type { NavigationItem, SocialLink } from "@/types";
 
-/** Identity and contact details, referenced by metadata, nav, and footer. */
+/**
+ * Identity and contact details, referenced by metadata, nav, and footer.
+ *
+ * Only language-neutral values live here. The job title, location phrasing, and
+ * site description read differently per language and live in `src/i18n`.
+ */
 export const siteConfig = {
   name: "Mohammad Iqbal Kresna Pangestu",
   shortName: "Pangestu",
-  role: "Front-end Developer",
-  location: "Bandung & Jakarta",
   email: "mohammadiqbalkresna@gmail.com",
   url: "https://kresnapangestu.com",
-  description:
-    "Front-end developer in Bandung and Jakarta. Four years building telecom operations dashboards and migrating legacy front-ends to React and Next.js.",
   resumeUrl:
     "https://drive.google.com/drive/folders/1NYDO4BkBAZ1-IMU47hyK9wnhmDt46mGF?usp=sharing",
   moreProjectsUrl:
@@ -18,11 +19,12 @@ export const siteConfig = {
 } as const;
 
 // Root-relative hrefs so the same nav works from a project page, where the
-// landing page's section anchors do not exist.
+// landing page's section anchors do not exist. Labels come from the dictionary,
+// keyed by `id`, so a nav link cannot exist without a translation for it.
 export const navigationItems: readonly NavigationItem[] = [
-  { id: "about", label: "About", href: "/#about" },
-  { id: "experience", label: "Experience", href: "/#experience" },
-  { id: "projects", label: "Projects", href: "/#projects" },
+  { id: "about", href: "/#about" },
+  { id: "experience", href: "/#experience" },
+  { id: "projects", href: "/#projects" },
 ];
 
 export const socialLinks: readonly SocialLink[] = [
@@ -43,7 +45,10 @@ export const socialLinks: readonly SocialLink[] = [
   },
 ];
 
-/** Greetings cycled in the hero. Order is intentional: English first. */
+/**
+ * Greetings cycled in the hero. Deliberately *not* translated: the point is the
+ * spread of languages itself, and it reads the same whichever locale is active.
+ */
 export const heroGreetings: readonly string[] = [
   "Hello",
   "Nǐ hǎo",

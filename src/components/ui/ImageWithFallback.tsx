@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
+import { useTranslation } from "@/i18n/LocaleProvider";
 import { cn } from "@/lib/cn";
 
 interface ImageWithFallbackProps {
@@ -32,12 +33,13 @@ export function ImageWithFallback({
   className,
   fit = "cover",
 }: ImageWithFallbackProps) {
+  const t = useTranslation();
   const [hasFailed, setHasFailed] = useState(false);
 
   if (hasFailed) {
     return (
       <p className="absolute inset-0 grid place-items-center px-4 text-center text-fluid-xs text-ink-subtle">
-        Preview unavailable
+        {t.media.previewUnavailable}
       </p>
     );
   }

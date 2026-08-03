@@ -1,9 +1,13 @@
 /**
  * Shared domain types. Portfolio content is data, never JSX — every field here
  * is serialisable so entries can move to JSON or a CMS without touching the UI.
+ *
+ * These describe *structure*: identifiers, dates, technologies, image paths.
+ * Prose that a reader sees lives in `src/i18n`, keyed by the ids below, so a
+ * second language adds copy without duplicating a single date or file path.
  */
 
-/** Employment type, kept as a closed union so the UI can style each variant. */
+/** Employment type, kept as a closed union so each variant has a translation. */
 export type EmploymentType =
   | "Full-time"
   | "Part-time"
@@ -11,46 +15,28 @@ export type EmploymentType =
   | "Internship";
 
 export interface Experience {
-  /** Stable key for React lists and tab wiring. */
+  /** Stable key for React lists, tab wiring, and the copy lookup. */
   readonly id: string;
+  /** Company name. A proper noun — not translated. */
   readonly company: string;
-  readonly role: string;
   readonly employmentType: EmploymentType;
-  /** Human-readable range, e.g. "October 2021 – Present". */
-  readonly period: string;
-  /** Month the role started, `YYYY-MM`. Drives the computed duration. */
+  /** Month the role started, `YYYY-MM`. Drives the displayed period and duration. */
   readonly startedAt: `${number}-${number}`;
   /** Month the role ended, `YYYY-MM`. Omit for a current role. */
   readonly endedAt?: `${number}-${number}`;
-  /** Achievement-oriented bullets. One idea per entry, no nested markup. */
-  readonly highlights: readonly string[];
   readonly technologies: readonly string[];
 }
 
 export interface Project {
   readonly id: string;
+  /** Product name. A proper noun — not translated. */
   readonly name: string;
-  readonly summary: string;
-  /** What the author personally contributed, separate from what the product is. */
-  readonly contribution: string;
   readonly imageSrc: string;
   readonly technologies: readonly string[];
   /** Live site or case study. Absent when the work is not publicly viewable. */
   readonly url?: string;
-
-  // --- Detail-page fields. Each is optional and its section is hidden when
-  // absent, so a project carrying only the fields above still renders fully.
-
   /** Employer or client the work was done under, where one applies. */
   readonly company?: string;
-  /** Title held on this project. */
-  readonly role?: string;
-  /** Delivery period, e.g. "2022 – 2023". Omit when the date is not known. */
-  readonly year?: string;
-  /** The need the product addresses. */
-  readonly problem?: string;
-  /** A stated result. Omit unless there is evidence for one. */
-  readonly outcome?: string;
   /**
    * Extra screenshots beyond `imageSrc`. The gallery adapts from a single
    * full-bleed tile to a grid as more are supplied.
@@ -60,12 +46,12 @@ export interface Project {
 
 export interface NavigationItem {
   readonly id: SectionId;
-  readonly label: string;
   /** Root-relative so the nav works from project pages as well as the landing page. */
   readonly href: `/#${string}`;
 }
 
 export interface SocialLink {
+  /** Platform name. A proper noun — not translated. */
   readonly label: string;
   readonly url: string;
   /** Icon key resolved by the presentation layer, not a component reference. */

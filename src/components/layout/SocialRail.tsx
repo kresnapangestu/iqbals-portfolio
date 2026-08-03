@@ -1,5 +1,6 @@
 import { SocialIcon } from "@/components/ui/SocialIcon";
 import { siteConfig, socialLinks } from "@/data/site";
+import { useTranslation } from "@/i18n/LocaleProvider";
 
 /**
  * Fixed social rail and email, shown from large screens up.
@@ -13,10 +14,12 @@ import { siteConfig, socialLinks } from "@/data/site";
  * the full width there, so a fixed rail would sit on top of it.
  */
 export function SocialRail() {
+  const t = useTranslation();
+
   return (
     <div className="pointer-events-none hidden text-white mix-blend-difference rail:block">
       <ul
-        aria-label="Social profiles"
+        aria-label={t.a11y.socialProfiles}
         className="pointer-events-auto fixed bottom-0 left-gutter z-40 flex flex-col items-center gap-5 after:h-24 after:w-px after:bg-current after:opacity-40"
       >
         {socialLinks.map((link) => (
