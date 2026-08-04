@@ -162,8 +162,8 @@ export const id: Dictionary = {
       stara: {
         role: "Front-end Developer",
         highlights: [
-          "Membangun aplikasi React untuk BPLDH yang merampingkan pengajuan pendanaan dan memverifikasi berkas dari para pemangku kepentingan.",
-          "Mengerjakan alur yang dipakai pemohon BPLDH sekaligus perangkat internal yang memprosesnya.",
+          "Membangun aplikasi React untuk BPDLH yang merampingkan pengajuan pendanaan dan memverifikasi berkas dari para pemangku kepentingan.",
+          "Mengerjakan alur yang dipakai pemohon BPDLH sekaligus perangkat internal yang memprosesnya.",
           "Menyusun antarmuka dengan Atomic Design sehingga sisi eksternal dan internal berbagi satu lapisan komponen.",
         ],
       },
@@ -204,6 +204,18 @@ export const id: Dictionary = {
         problem:
           "Penurunan KPI jaringan tersembunyi di antara ribuan titik deret waktu, dan menelaah grafiknya satu per satu membuatnya baru ketahuan terlambat — kalau sempat ketahuan sama sekali.",
       },
+      next_pmt_cmt: {
+        summary:
+          "Dasbor pemantauan terpusat untuk XLSmart, menyajikan performa Telco API secara real-time dari tingkat nasional hingga kecamatan pada tampilan layar besar Network Operations Center.",
+        contribution:
+          "Memimpin desain sistem, migrasi, dan pengembangan menggunakan Next, Zustand, dan Recharts.",
+        role: "Front-end Developer",
+        year: "2023 – Sekarang",
+        problem:
+          "Tim Network Operations Center (NOC) dan pemangku kepentingan membutuhkan platform monitoring terpusat untuk memantau performa Telco API secara real-time di level Nasional, Provinsi, Kota, dan Kecamatan. Sebelumnya, dashboard penting tersebar di berbagai sistem, termasuk PMT-CMT, sehingga menyulitkan pemantauan cepat, analisis insiden, dan pengambilan keputusan saat terjadi gangguan jaringan.",
+        outcome:
+          "Membangun dashboard monitoring terpusat yang mengonsolidasikan dashboard krusial dari PMT-CMT ke dalam satu platform modern yang dioptimalkan untuk tampilan big-screen NOC. Solusi ini memberikan visibilitas real-time terhadap performa Telco API di seluruh wilayah operasional, mempercepat deteksi gangguan, meningkatkan efisiensi monitoring, dan mendukung pengambilan keputusan operasional yang lebih cepat.",
+      },
       "xl-axiata": {
         summary:
           "Service Operation Center untuk XLSmart yang menyajikan data operasional sebagai grafik, peta, dan tabel bagi pemangku kepentingan senior.",
@@ -224,6 +236,18 @@ export const id: Dictionary = {
         role: "Front-end Developer",
         problem:
           "Undangan pernikahan cetak mahal dan boros, sementara basis kode React dan SCSS yang ada mahal untuk ditambahi tema baru.",
+      },
+      bpdlh: {
+        summary:
+          "Sistem pengelolaan pendanaan untuk BPDLH (Badan Pengelola Dana Lingkungan Hidup): pemangku kepentingan mengajukan permohonan dana di satu sisi, tim verifikator menelaahnya di sisi lain.",
+        contribution:
+          "Membangun aplikasi React untuk sisi pemohon sekaligus back-office — Identity Server untuk masuk, React Hook Form untuk formulir pengajuan, Redux untuk state penelaahan.",
+        role: "Front-end Developer",
+        year: "2023 – 2024",
+        problem:
+          "Permohonan pendanaan dan dokumen pendukungnya berpindah secara manual, sehingga verifikator tidak punya cara yang konsisten untuk memeriksa berkas pemangku kepentingan dan tidak ada satu tampilan untuk melihat posisi alokasi dana.",
+        outcome:
+          "Permohonan dan verifikasi kini berjalan dalam satu sistem, sehingga alokasi sumber daya dan operasional harian membaik. Penataan antarmuka dengan Atomic Design membuat aplikasi eksternal dan internal berbagi satu lapisan komponen.",
       },
       masukbersama: {
         summary:

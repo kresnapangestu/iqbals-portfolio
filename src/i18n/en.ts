@@ -176,8 +176,8 @@ export const en = {
       stara: {
         role: "Front-end Developer",
         highlights: [
-          "Built a React application for BPLDH that streamlines funding requests and verifies stakeholder submissions.",
-          "Shipped the external-facing flows used by BPLDH applicants alongside the internal tooling used to process them.",
+          "Built a React application for BPDLH that streamlines funding requests and verifies stakeholder submissions.",
+          "Shipped the external-facing flows used by BPDLH applicants alongside the internal tooling used to process them.",
           "Structured the UI with Atomic Design so external and internal surfaces shared one component layer.",
         ],
       },
@@ -218,6 +218,19 @@ export const en = {
         problem:
           "Network KPI degradation hides in thousands of time-series points, and reviewing charts by hand catches it late — if at all.",
       },
+      next_pmt_cmt: {
+        summary:
+          "A centralised monitoring dashboard for XLSmart, showing Telco API performance in real time from national down to district level on Network Operations Center big-screen displays.",
+        contribution:
+          "Led the system architecture, migration, and front-end development using Next.js, Zustand, and Recharts.",
+        role: "Front-end Developer",
+        year: "2023 – Present",
+        problem:
+          "The Network Operations Center (NOC) team and business stakeholders needed a centralized monitoring platform to track the real-time performance of Telco APIs across National, Provincial, City, and District levels. Previously, critical operational dashboards were scattered across multiple systems, including PMT-CMT, making it difficult to monitor network health, investigate incidents, and make timely operational decisions.",
+
+        outcome:
+          "Delivered a centralized monitoring platform that unified critical PMT-CMT dashboards into a modern solution optimized for 24/7 NOC big-screen displays. The platform provides real-time visibility into Telco API performance across all operational regions, accelerates incident detection, improves monitoring efficiency, and enables faster, data-driven operational decision-making.",
+      },
       "xl-axiata": {
         summary:
           "A Service Operation Center for XLSmart, presenting operational data as charts, maps, and tables for senior stakeholders.",
@@ -237,6 +250,18 @@ export const en = {
         role: "Front-end Developer",
         problem:
           "Printed wedding invitations are expensive and wasteful, and the existing React and SCSS codebase was costly to extend with new themes.",
+      },
+      bpdlh: {
+        summary:
+          "A funding management system for BPDLH, the Indonesia Environment Fund: stakeholders file funding requests on one side, reviewers verify them on the other.",
+        contribution:
+          "Built both the applicant-facing and back-office React applications — Identity Server for sign-in, React Hook Form for the submission forms, Redux for review state.",
+        role: "Front-end Developer",
+        year: "2023 – 2024",
+        problem:
+          "Funding requests and the documents backing them moved by hand, leaving reviewers no consistent way to verify a stakeholder submission and no single view of where allocation stood.",
+        outcome:
+          "Requests and verification run through one system, which improved resource allocation and day-to-day operations. Structuring the UI with Atomic Design let the external and internal applications share one component layer.",
       },
       masukbersama: {
         summary:

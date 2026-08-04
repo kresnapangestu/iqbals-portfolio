@@ -83,8 +83,6 @@ export function LanguageSwitcher() {
         const config = localeConfig[locale];
         const isSelected = locale === selected;
 
-        console.log(locale, localeConfig[locale], selected);
-
         return (
           <button
             key={locale}

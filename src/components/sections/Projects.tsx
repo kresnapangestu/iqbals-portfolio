@@ -7,8 +7,16 @@ import { useTranslation } from "@/i18n/LocaleProvider";
 /** How many cards load eagerly — roughly one desktop row. */
 const PRIORITY_CARD_COUNT = 3;
 
+/**
+ * Cards shown on the landing page: two full rows of three. The rest stay
+ * reachable at `/projects/<id>`, so `projectItems` order is what decides which
+ * work is highlighted here.
+ */
+const HIGHLIGHT_COUNT = 6;
+
 export function Projects() {
   const t = useTranslation();
+  const highlights = projectItems.slice(0, HIGHLIGHT_COUNT);
 
   return (
     <section
@@ -23,11 +31,11 @@ export function Projects() {
           title={t.projects.heading}
         />
 
-        {projectItems.length === 0 ? (
+        {highlights.length === 0 ? (
           <p className="text-fluid-base text-ink-muted">{t.projects.empty}</p>
         ) : (
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {projectItems.map((project, index) => (
+            {highlights.map((project, index) => (
               <li key={project.id} className="h-full">
                 <ProjectCard
                   project={project}

@@ -57,8 +57,8 @@ export function Navbar({ activeSection }: NavbarProps) {
         >
           <Image
             src="/images/logo.png"
-            width={130}
-            height={30}
+            width={147}
+            height={35}
             alt={t.meta.logoAlt(siteConfig.name)}
             priority
             className="h-6 w-auto sm:h-[30px]"

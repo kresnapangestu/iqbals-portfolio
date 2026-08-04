@@ -90,41 +90,21 @@ export const WorksDetail = [
     tools: ["React JS", "React Hook Form"],
   },
   {
-    place: "Sama",
-    caption: "Front-end Developer & UI/UX Designer (Freelance) ",
+    place: "STARA",
+    caption: "Front-end Developer (Part Time) ",
 
-    duration: "July 2022 – February 2023",
-    realDuration: diffInYearsMonths("July 2022", "February 2023"),
+    duration: "2023 – 2024",
+    realDuration: diffInYearsMonths("June 2023", "July 2024"),
     desc: (
       <p>
         {" "}
-        Collaborated with other team to built several apps such as point of
-        sales application, learning platform, and waste management and recycling
-        apps.
-        <ul>
-          <li>
-            Helping Designed and developed In-house application of the
-            Indonesian Ministry of Manpower.
-          </li>
-          <li>
-            Helping Designed User Interfaces Indonesian Valve Manufacturing
-            Company Profile.
-          </li>
-          <li>
-            Helping Designed User Interfaces for Oil Mart (Point of sales and
-            cashier app).
-          </li>
-          <li>
-            Helping Designed User Interfaces also developed landing page and web
-            applications for MasukBersama (learning platform) using Next JS and
-            Tailwind CSS.
-          </li>
-          <li>
-            Helping Designed User Interfaces also developed landing page and web
-            applications for DALANG (Waste management and recycling apps) using
-            React JS.
-          </li>
-        </ul>{" "}
+        BPLDH (Badan Pengelola Dana Lingkungan Hidup) Management System web
+        application was developed to streamline funding requests and facilitate
+        the verification of stakeholder submissions. These applications
+        significantly enhanced resource allocation efficiency and operational
+        effectiveness. In this project, I contributed to the development of both
+        back-office and client-facing applications as front-end developer,
+        ensuring seamless functionality and improved user experience.
       </p>
     ),
     tools: ["Next JS", "Tailwind CSS", "Javascript", "Figma"],
@@ -219,40 +199,40 @@ export const ProjectList = [
       </a>
     ),
   },
+  // {
+  //   image: "/images/masukbersama_exam.webp",
+  //   tools: ["Figma", "Next JS", "Tailwind CSS"],
+  //   caption: (
+  //     <a>
+  //       <span style={{ fontSize: 28 }}>MasukBersama</span> <br></br>
+  //       <br></br>
+  //       Masukbersama is a dual platform application (mobile and website based
+  //       application), which was built with the aim of helping high school
+  //       students to test their competence before taking the college entrance
+  //       test. <br></br>
+  //       <br></br>
+  //       In this project I help to develop the web-base app using Next JS and
+  //       Tailwind CSS, also designing the user interface of the application.
+  //     </a>
+  //   ),
+  //   open: "https://masukbersama.vercel.app",
+  // },
   {
-    image: "/images/masukbersama_exam.webp",
-    tools: ["Figma", "Next JS", "Tailwind CSS"],
-    caption: (
-      <a>
-        <span style={{ fontSize: 28 }}>MasukBersama</span> <br></br>
-        <br></br>
-        Masukbersama is a dual platform application (mobile and website based
-        application), which was built with the aim of helping high school
-        students to test their competence before taking the college entrance
-        test. <br></br>
-        <br></br>
-        In this project I help to develop the web-base app using Next JS and
-        Tailwind CSS, also designing the user interface of the application.
-      </a>
-    ),
-    open: "https://masukbersama.vercel.app",
-  },
-  {
-    image: "/images/sama_landingpage.webp",
-    tools: ["Figma", "Next JS", "Tailwind CSS"],
+    image: "/images/bpdlh.webp",
+    tools: ["React", "Identity Server", "React-hook-form", "Redux"],
     caption: (
       <a>
         <span style={{ fontSize: 28 }}>Sama Landing Page</span> <br></br>
-        <br></br>A single web page to elevate brand awareness of the growing
-        software house by showing information like our portfolio. Other that
-        this landing page is built to generate call-to-action from customer to
-        use our services.<br></br>
-        <br></br>
-        In this project i&apos;m helping team to develop and design the User
-        Interface of the application.
+        <br></br>BPLDH (Badan Pengelola Dana Lingkungan Hidup) Management System
+        web application was developed to streamline funding requests and
+        facilitate the verification of stakeholder submissions. These
+        applications significantly enhanced resource allocation efficiency and
+        operational effectiveness. In this project, I contributed to the
+        development of both back-office and client-facing applications as
+        front-end developer, ensuring seamless functionality and improved user
+        experience.<br></br>
       </a>
     ),
-    open: "https://samabandung.vercel.app",
   },
   {
     image: "/images/ourinvitation.webp",
@@ -286,6 +266,26 @@ export const ProjectList = [
         <br></br>
         In this project I help to develop the web-base app using React JS and
         Formik for building and processing form data
+      </a>
+    ),
+  },
+  {
+    image: "/images/next-pmt-cmt.webp",
+    tools: ["Next JS", "Zustand", "Recharts", "Leaflet"],
+    caption: (
+      <a>
+        <span style={{ fontSize: 28 }}>Next PMT-CMT</span> <br></br>
+        <br></br>
+        Developed a centralized web-based monitoring dashboard for **XLSMART**
+        to provide real-time visibility into nationwide telecommunications
+        network performance across **National, Provincial, City, and District**
+        levels. Designed for **Network Operations Center (NOC)** big-screen
+        displays, the platform enables operators to continuously monitor
+        critical Telco APIs, identify network issues quickly, and support
+        operational decision-making. The dashboard also consolidates and
+        preserves essential monitoring views previously available in the legacy
+        **XLSMART PMT-CMT** system, providing a modern, scalable, and unified
+        monitoring experience.
       </a>
     ),
   },

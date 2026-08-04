@@ -6,6 +6,9 @@ import type { Project } from "@/types";
  * under `content.projects`, keyed by the ids below.
  *
  * `url` is omitted where the product is not publicly viewable.
+ *
+ * Order matters: the landing page highlights the first `HIGHLIGHT_COUNT`
+ * entries (see `sections/Projects`). Every entry keeps its own detail page.
  */
 const entries = [
   {
@@ -25,6 +28,13 @@ const entries = [
     // Not publicly deployed, so no `url`.
   },
   {
+    id: "next_pmt_cmt",
+    name: "XLSmart Next PMT/CMT",
+    imageSrc: "/images/next-pmt-cmt.webp",
+    technologies: ["Next JS", "Zustand", "Recharts", "Leaflet"],
+    company: "Huawei",
+  },
+  {
     id: "xl-axiata",
     name: "XLSmart PMT/CMT",
     imageSrc: "/images/ui-pmt-cmt.webp",
@@ -39,13 +49,12 @@ const entries = [
     url: "https://ourinvitation.id",
   },
   {
-    id: "masukbersama",
-    name: "MasukBersama",
-    imageSrc: "/images/masukbersama_exam.webp",
-    gallery: ["/images/masukbersama_landingpage.webp"],
-    technologies: ["Next.js", "Tailwind CSS", "Figma"],
-    url: "https://masukbersama.vercel.app",
-    company: "Sama",
+    id: "bpdlh",
+    name: "BPDLH Management System",
+    imageSrc: "/images/bpdlh.webp",
+    technologies: ["React", "Identity Server", "React Hook Form", "Redux"],
+    company: "STARA",
+    // Internal government system, so no `url`.
   },
   {
     id: "mybki",
@@ -55,12 +64,20 @@ const entries = [
     company: "Qtasnim",
   },
   {
+    id: "masukbersama",
+    name: "MasukBersama",
+    imageSrc: "/images/masukbersama_exam.webp",
+    gallery: ["/images/masukbersama_landingpage.webp"],
+    technologies: ["Next.js", "Tailwind CSS", "Figma"],
+    url: "https://masukbersama.vercel.app",
+    company: "Sama",
+  },
+  {
     id: "mubarokulhuda",
     name: "SPP Mubarokulhuda",
     imageSrc: "/images/mubarokulhuda.webp",
     technologies: ["React", "Figma"],
-    // Former URL https://sppmubarokulhuda.netlify.app now returns 404 — removed
-    // so the page shows "Not publicly available" rather than a broken link.
+    company: "Self Employed",
   },
 ] as const satisfies readonly Project[];
 
