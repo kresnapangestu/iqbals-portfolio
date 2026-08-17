@@ -74,7 +74,9 @@ export const en = {
       rt(
         "An early interest in computers led me to study computer science at ",
         { emphasis: "Politeknik Negeri Bandung" },
-        ", where I fell into web development and stayed. Since then I’ve built software for a software house and for a large corporation.",
+        ", where I fell into web development and stayed. Since then I’ve built software for a software house and for a large corporation, and I’m now continuing that path toward a bachelor’s degree in Informatics Engineering at ",
+        { emphasis: "Universitas Jenderal Achmad Yani (UNJANI)" },
+        ".",
       ),
       rt(
         "My focus now is front-end work at ",
@@ -143,7 +145,7 @@ export const en = {
 
   footer: {
     prompt: "Have something you need built?",
-    note: "Open to freelance work and full-time roles. A short outline of the work and your timeline is enough to start a conversation.",
+    note: "Open to opportunities. A short outline of the work and your timeline is enough to start a conversation.",
     credit: (name: string) =>
       `Designed and built by ${name}. Self-hosted with Next.js.`,
   },

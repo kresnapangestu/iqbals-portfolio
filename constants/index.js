@@ -270,7 +270,7 @@ export const ProjectList = [
     ),
   },
   {
-    image: "/images/next-pmt-cmt.webp",
+    image: "/images/next-pmt-cmt-v2.webp",
     tools: ["Next JS", "Zustand", "Recharts", "Leaflet"],
     caption: (
       <a>

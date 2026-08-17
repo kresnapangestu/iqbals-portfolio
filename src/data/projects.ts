@@ -30,7 +30,7 @@ const entries = [
   {
     id: "next_pmt_cmt",
     name: "XLSmart Next PMT/CMT",
-    imageSrc: "/images/next-pmt-cmt.webp",
+    imageSrc: "/images/next-pmt-cmt-v2.webp",
     technologies: ["Next JS", "Zustand", "Recharts", "Leaflet"],
     company: "Huawei",
   },

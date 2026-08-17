@@ -63,7 +63,9 @@ export const id: Dictionary = {
       rt(
         "Ketertarikan pada komputer sejak kecil membawa saya menempuh studi ilmu komputer di ",
         { emphasis: "Politeknik Negeri Bandung" },
-        ", tempat saya berkenalan dengan pengembangan web dan menekuninya sejak itu. Setelahnya saya membangun perangkat lunak untuk sebuah software house dan untuk sebuah korporasi besar.",
+        ", tempat saya berkenalan dengan pengembangan web dan menekuninya sejak itu. Setelahnya saya membangun perangkat lunak untuk sebuah software house dan untuk sebuah korporasi besar, dan kini saya melanjutkan jenjang itu ke gelar sarjana Teknik Informatika di ",
+        { emphasis: "Universitas Jenderal Achmad Yani (UNJANI)" },
+        ".",
       ),
       rt(
         "Fokus saya sekarang adalah pekerjaan front-end di ",
@@ -130,7 +132,7 @@ export const id: Dictionary = {
 
   footer: {
     prompt: "Punya sesuatu yang perlu dibangun?",
-    note: "Terbuka untuk pekerjaan lepas maupun posisi penuh waktu. Gambaran singkat soal pekerjaannya dan lini masa Anda sudah cukup untuk memulai percakapan.",
+    note: "Terbuka untuk kesempatan apapun. Gambaran singkat soal pekerjaannya dan lini masa Anda sudah cukup untuk memulai percakapan.",
     credit: (name) =>
       `Dirancang dan dibangun oleh ${name}. Di-hosting sendiri dengan Next.js.`,
   },
