@@ -18,11 +18,13 @@ import {
   type ProjectEntry,
 } from "@/data/projects";
 import { siteConfig } from "@/data/site";
+import { useReveal } from "@/hooks/useReveal";
 import { projectCopy } from "@/i18n";
 import { useTranslation } from "@/i18n/LocaleProvider";
 import { cn } from "@/lib/cn";
 import { buildProjectSchema } from "@/lib/schema";
 import { isSafeExternalUrl } from "@/lib/url";
+import { projectImageTransition } from "@/lib/viewTransition";
 
 interface ProjectPageProps {
   readonly project: ProjectEntry;
@@ -95,6 +97,7 @@ export default function ProjectDetailPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const t = useTranslation();
   const copy = projectCopy(t, project.id);
+  const detailsRef = useReveal<HTMLDivElement>();
 
   const images = [project.imageSrc, ...(project.gallery ?? [])];
   const hasLiveUrl = isSafeExternalUrl(project.url);
@@ -212,7 +215,7 @@ export default function ProjectDetailPage({
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex w-full items-center justify-center gap-2 rounded-pill bg-ink px-6 py-3.5 text-fluid-sm font-medium text-white transition-colors duration-200 ease-smooth hover:bg-ink-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
+                    className="group flex w-full items-center justify-center gap-2 rounded-pill bg-ink px-6 py-3.5 text-fluid-sm font-medium text-white transition-[background-color,transform] duration-200 ease-smooth hover:bg-ink-muted active:translate-y-px motion-reduce:active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
                   >
                     {t.projectDetail.visitLiveSite}
                     <svg
@@ -225,6 +228,7 @@ export default function ProjectDetailPage({
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       aria-hidden
+                      className="transition-transform duration-200 ease-smooth group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none"
                     >
                       <path d="M7 17L17 7" />
                       <path d="M9 7h8v8" />
@@ -239,7 +243,7 @@ export default function ProjectDetailPage({
 
                 <Link
                   href="/#projects"
-                  className="mt-3 flex w-full items-center justify-center rounded-pill border border-line px-6 py-3.5 text-fluid-sm font-medium text-ink transition-colors duration-200 ease-smooth hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
+                  className="mt-3 flex w-full items-center justify-center rounded-pill border border-line px-6 py-3.5 text-fluid-sm font-medium text-ink transition-[border-color,transform] duration-200 ease-smooth hover:border-ink active:translate-y-px motion-reduce:active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
                 >
                   {t.projectDetail.allProjects}
                 </Link>
@@ -255,6 +259,13 @@ export default function ProjectDetailPage({
                 {images.map((src, index) => (
                   <div
                     key={src}
+                    // The lead image is the other half of the card's named
+                    // pair: it is what the thumbnail becomes on arrival.
+                    style={
+                      index === 0
+                        ? projectImageTransition(project.id)
+                        : undefined
+                    }
                     className={cn(
                       // Screenshots float inside a padded tile rather than
                       // filling it, so nothing in the captured UI is cropped away.
@@ -276,7 +287,7 @@ export default function ProjectDetailPage({
                 ))}
               </div>
 
-              <div className="mt-14">
+              <div ref={detailsRef} className="mt-14">
                 <h2 className="sr-only">{t.projectDetail.detailHeading}</h2>
                 <div className="border-t border-line">
                   {copy.problem && (
@@ -312,7 +323,7 @@ export default function ProjectDetailPage({
                   <li>
                     <Link
                       href={`/projects/${previous.id}`}
-                      className="group flex h-full flex-col gap-1 rounded-card border border-line bg-surface p-6 transition-colors duration-200 ease-smooth hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2"
+                      className="group flex h-full flex-col gap-1 rounded-card border border-line bg-surface p-6 transition-[border-color,box-shadow,transform] duration-200 ease-smooth hover:-translate-y-1 hover:border-ink hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2 motion-reduce:hover:translate-y-0"
                     >
                       <span className="text-fluid-xs uppercase tracking-widest text-ink-subtle">
                         {t.projectDetail.previous}
@@ -327,7 +338,7 @@ export default function ProjectDetailPage({
                   <li>
                     <Link
                       href={`/projects/${next.id}`}
-                      className="group flex h-full flex-col gap-1 rounded-card border border-line bg-surface p-6 transition-colors duration-200 ease-smooth hover:border-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2 sm:items-end sm:text-right"
+                      className="group flex h-full flex-col gap-1 rounded-card border border-line bg-surface p-6 transition-[border-color,box-shadow,transform] duration-200 ease-smooth hover:-translate-y-1 hover:border-ink hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2 motion-reduce:hover:translate-y-0 sm:items-end sm:text-right"
                     >
                       <span className="text-fluid-xs uppercase tracking-widest text-ink-subtle">
                         {t.projectDetail.next}

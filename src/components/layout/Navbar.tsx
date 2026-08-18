@@ -6,6 +6,7 @@ import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 import { navigationItems, siteConfig } from "@/data/site";
 import { useTranslation } from "@/i18n/LocaleProvider";
 import { cn } from "@/lib/cn";
+import { viewTransitionName } from "@/lib/viewTransition";
 import type { SectionId } from "@/types";
 
 interface NavbarProps {
@@ -46,8 +47,22 @@ export function Navbar({ activeSection }: NavbarProps) {
   return (
     <header
       ref={navRef}
+      // Named for the View Transitions API: the header exists on both pages, so
+      // it holds still through a navigation instead of cross-fading with the
+      // content underneath it.
+      style={viewTransitionName("site-header")}
       className="fixed inset-x-0 top-0 z-50 border-b border-line-inverse bg-surface-inverse/95 backdrop-blur"
     >
+      {/* Reading position, drawn on the header's own edge. Scroll-driven CSS —
+          no listener, and nothing at all where the timeline is unsupported.
+          Deliberately not the accent: the active nav item is already the one
+          yellow thing on screen. */}
+      <span
+        aria-hidden
+        data-scroll-progress
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-white/40"
+      />
+
       <div className="mx-auto flex max-w-content items-center justify-between gap-3 px-gutter py-3 sm:gap-4">
         {/* Root-relative: `#hero` alone is a dead link on a project page,
             where no such anchor exists. */}
@@ -78,10 +93,14 @@ export function Navbar({ activeSection }: NavbarProps) {
                 className={cn(
                   // `py-2 -my-2`: a 24px-tall text link is the bare minimum on a
                   // touch tablet, and the negative margin keeps the bar's height.
-                  "rounded-sm py-2 -my-2 text-fluid-sm transition-colors duration-200 ease-smooth",
+                  "relative rounded-sm py-2 -my-2 text-fluid-sm transition-colors duration-200 ease-smooth",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-inverse",
+                  // A rule that wipes in under the label, in whatever colour the
+                  // label already is — the same gesture as the section rules.
+                  "after:absolute after:inset-x-0 after:bottom-1.5 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-reveal after:content-['']",
+                  "hover:after:scale-x-100 focus-visible:after:scale-x-100 motion-reduce:after:transition-none",
                   activeSection === item.id
-                    ? "text-accent"
+                    ? "text-accent after:scale-x-100"
                     : "text-white/70 hover:text-white",
                 )}
               >

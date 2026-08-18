@@ -106,7 +106,7 @@ export const en = {
     /** Stands in for the end month of a role that is still running. */
     present: "Present",
     technologiesAt: (company: string) => `Technologies used at ${company}`,
-    viewResume: "View full resume →",
+    viewResume: "View full resume",
     duration: {
       lessThanMonth: "less than a month",
       years: (count: number) => `${count} year${count === 1 ? "" : "s"}`,
@@ -118,8 +118,8 @@ export const en = {
   projects: {
     heading: "Selected work",
     empty: "Selected work is being updated.",
-    seeMore: "See more work →",
-    viewProject: "View project →",
+    seeMore: "See more work",
+    viewProject: "View project",
     technologiesIn: (project: string) => `Technologies used in ${project}`,
   },
 

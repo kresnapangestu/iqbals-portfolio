@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 export type IntroPhase = "visible" | "leaving" | "done";
 
-const HOLD_MS = 700;
+/** Held fully opaque before the splash starts to leave. */
+export const INTRO_HOLD_MS = 700;
 const FADE_MS = 500;
 
 /**
@@ -23,10 +24,10 @@ export function useIntroOverlay(enabled: boolean): IntroPhase {
       return;
     }
 
-    const startLeaving = window.setTimeout(() => setPhase("leaving"), HOLD_MS);
+    const startLeaving = window.setTimeout(() => setPhase("leaving"), INTRO_HOLD_MS);
     const finish = window.setTimeout(
       () => setPhase("done"),
-      HOLD_MS + FADE_MS,
+      INTRO_HOLD_MS + FADE_MS,
     );
 
     return () => {

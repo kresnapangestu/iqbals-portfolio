@@ -73,8 +73,16 @@ const config: Config = {
         pill: "999px",
       },
 
+      // The one sanctioned shadow. It is a response to hover, never ambient.
+      boxShadow: {
+        lift: "0 4px 24px rgba(0, 0, 0, 0.08)",
+      },
+
       transitionTimingFunction: {
         smooth: "cubic-bezier(0.4, 0, 0.2, 1)",
+        // Exponential ease-out. Leaves immediately and settles slowly, so an
+        // arrival reads as decided rather than as something being eased in.
+        reveal: "cubic-bezier(0.16, 1, 0.3, 1)",
       },
 
       transitionDuration: {

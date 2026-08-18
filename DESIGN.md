@@ -266,12 +266,10 @@ surface look important, and never stacked into a multi-level elevation scale.
 
 ### Shadow Vocabulary
 
-- **lift-hover** (`box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08)`): the single
-  sanctioned shadow. Applied on hover to an element the visitor can act on.
-
-> Not yet present in the implementation — the current hover treatment is a
-> border-colour shift. This is a sanctioned addition, not a description of
-> existing code.
+- **lift-hover** (`box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08)`, token
+  `shadow-lift`): the single sanctioned shadow. Applied on hover, together with
+  a 4px rise, to an element the visitor can act on — project cards and the
+  previous/next links. Never at rest.
 
 ### Named Rules
 
@@ -280,6 +278,49 @@ on a default state is a defect.
 
 **The One Shadow Rule.** There is exactly one shadow value. A second elevation
 step means the layout needed hierarchy, not depth.
+
+## Motion
+
+Motion here does one of three jobs: it acknowledges an action, it makes a state
+change legible, or it carries one thing across a boundary. Nothing moves to be
+seen moving.
+
+**The authored moment.** A section announces itself the way a console labels a
+channel: the monospace index resolves, the title follows 80ms later, and the
+hairline *draws* across the column from the left over 900ms. It is the one
+entrance on the site that is not a fade, every section uses it, and it is the
+reason the page does not need a different flourish per block.
+
+**Reveal.** Content blocks fade and rise 12px on first intersection,
+700ms/`ease-reveal`. The finished state is what ships in the HTML — `useReveal`
+applies the *starting* state in a layout effect before first paint and drops it
+on intersection, so nothing that fails to run can leave the page empty.
+
+**Stagger.** Used only where a list arrives as a list: the project grid, 70ms
+apart, 350ms of total spread. The container holds the trigger
+(`data-reveal-steps`) and the children carry the motion (`data-reveal-step`).
+
+**Continuity across pages.** Client navigation runs inside a View Transition.
+The header is named `site-header` so it holds still, and each project thumbnail
+is named `project-image-<id>` so the card the visitor clicked becomes the detail
+page's lead image instead of the two pages cross-fading past each other.
+Unsupported browsers and reduced-motion visitors navigate normally.
+
+**Scroll-driven.** Two effects, both pure CSS and both no-ops where the timeline
+is unsupported: the reading-position hairline on the header's bottom edge
+(`scroll()`), and the portrait's drift against the About column (`view()`,
+±0.875rem, on an image scaled past its frame so the drift never uncovers an
+edge). The hairline is white at 40%, never the accent — the active nav item is
+already the one yellow thing on screen.
+
+**Feedback.** 200ms, `ease-smooth`. Buttons take a 1px press; arrows advance 4px
+on hover; the project card lifts 4px and takes the one sanctioned shadow; nav
+links draw the same hairline the sections do, in whatever colour the label
+already is.
+
+**Reduced motion** removes all of it. The global reset collapses durations, the
+reveal hook never applies its starting state, the scroll timelines and view
+transitions are switched off, and the splash is skipped entirely.
 
 ## Shapes
 
@@ -363,10 +404,18 @@ boundary mid-scroll instead of snapping a beat late. Each rail terminates in a
 
 ### Tab Rail (signature)
 
-The experience switcher. Below `md` it is a horizontally scrollable strip with a
-bottom-border active state; from `md` it becomes a vertical rail with a 2px
-left-border marker against a 1px Hairline track. It is a real WAI-ARIA tablist —
-roving tabindex, arrow/Home/End keys — not a set of styled buttons.
+The experience switcher. Below `md` it is a horizontally scrollable strip; from
+`md` it becomes a vertical rail against a 1px Hairline track. It is a real
+WAI-ARIA tablist — roving tabindex, arrow/Home/End keys — not a set of styled
+buttons.
+
+The active edge is a single 2px Ink marker that **travels** between tabs rather
+than switching off one border and on another, so the rail reads as one indicator
+being moved — which is what a channel selector does. Its box is measured from
+the selected button and published as `--tab-x/y/w/h`; CSS decides from those
+which axis to use, so the marker survives the strip turning into a rail without
+any width read in JavaScript. It mounts only once measured, so it appears in
+place instead of sliding in from the corner on load.
 
 ### Accordion (signature)
 
@@ -383,9 +432,18 @@ with CSS off.
   `rounded-card`/`rounded-pill`, `border-line`, the ink/surface/accent families.
   A raw hex or px value in a component is a defect.
 - **Do** pick the accent by surface: `#FFF66B` on dark, `#6F6000` on light.
-- **Do** keep motion to confirmation — hover, focus, and entrance only. 200ms
-  for state, 400–500ms for entrance, `cubic-bezier(0.4, 0, 0.2, 1)`, and never
-  more than 12px of travel.
+- **Do** keep motion to confirmation or continuity — feedback, state, entrance,
+  and the link between two views. 200ms for state, 300ms for a view change,
+  500–900ms for an entrance, and never more than 12px of travel.
+- **Do** pick the curve by job: `ease-smooth` (`cubic-bezier(0.4, 0, 0.2, 1)`)
+  for state, `ease-reveal` (`cubic-bezier(0.16, 1, 0.3, 1)`) for arrivals.
+- **Do** ship the finished state in the markup. A reveal applies its *starting*
+  state from script, before first paint, and removes it on intersection — so
+  server HTML, a crawler, a blocked bundle, and a reduced-motion visitor all get
+  the completed page. An entrance that lives in the HTML is a defect.
+- **Do** keep one motion idea. The section rule drawing across the column is the
+  authored entrance and every section uses it; content blocks fade and rise, and
+  nothing else invents a flourish of its own.
 - **Do** use `animation-fill-mode: forwards`, never `both`. `both` applies the
   keyframe's start state before the animation runs, which strands content at
   `opacity: 0` whenever animations are throttled or never start.
@@ -406,9 +464,19 @@ with CSS off.
 - **Don't** add a second typeface, or a DM Sans weight outside 300/400/500/600 —
   the other files are not self-hosted.
 - **Don't** use `#FFF66B` for text on white. It sits near 2.4:1.
-- **Don't** add scroll-triggered reveals, parallax, looping animation, or page
-  transitions. Motion confirms; it does not perform.
+- **Don't** stage a reveal that the reader has to wait through. Scroll reveals,
+  the sanctioned parallax, and the cross-page View Transition are all in the
+  system now, but each one has to explain something: the rule draws to announce
+  a section, the grid staggers because it is a list arriving, the thumbnail
+  morphs because it is the same object on both pages. A fade added to a block
+  merely because it scrolled past is decoration and comes back out.
+- **Don't** cap a stagger above ~350ms total, or reinterpret every scrolled
+  section as a staggered list.
+- **Don't** let scroll-driven or view-transition work become a dependency. Both
+  are CSS-first here and no-ops where unsupported; nothing may require them to
+  render.
 - **Don't** branch layout on a JavaScript width check. Breakpoints and `clamp()`
   handle it, and a one-shot `innerWidth` read was removed from this codebase for
-  being wrong on every resize.
+  being wrong on every resize. Measuring an element and handing CSS the numbers
+  — as the tab marker does — is not the same thing and is allowed.
 - **Don't** give tags a hover, selected, or pressed state. They are metadata.

@@ -43,3 +43,119 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Motion
+   ---------------------------------------------------------------------------
+   Everything below is written so the *finished* state is the default. Script
+   applies the starting state before first paint, which means server markup, a
+   crawler, a failed bundle, and reduced motion all see completed content.
+   -------------------------------------------------------------------------*/
+
+:root {
+  /* Exponential ease-out — the arrival curve for every entrance on the site. */
+  --ease-reveal: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scroll reveal and mount entrance. `useReveal` flips `data-reveal` between
+   `hidden` and `shown`; an element it never reaches keeps the finished state. */
+[data-reveal],
+[data-reveal-step] {
+  transition:
+    opacity 700ms var(--ease-reveal),
+    transform 700ms var(--ease-reveal);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal="hidden"]:not([data-reveal-steps]),
+[data-reveal="hidden"][data-reveal-steps] [data-reveal-step] {
+  opacity: 0;
+  /* The system's travel ceiling. Further reads as the page assembling itself. */
+  transform: translateY(0.75rem);
+}
+
+/* The section rule draws instead of rising: a channel being switched on, which
+   is the one entrance on this site that is authored rather than generic. */
+[data-reveal-rule] {
+  transform-origin: left center;
+  transition: transform 900ms var(--ease-reveal);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal="hidden"] [data-reveal-rule] {
+  transform: scaleX(0);
+}
+
+/* Reading position, drawn as the header's own hairline. Scroll-driven, so it
+   costs no script; where the timeline is unsupported the declaration drops and
+   the bar simply stays at its static scaleX(0). */
+@keyframes scroll-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+[data-scroll-progress] {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+@supports (animation-timeline: scroll()) {
+  [data-scroll-progress] {
+    animation: scroll-progress linear forwards;
+    animation-timeline: scroll(root block);
+  }
+}
+
+/* Depth on the one image large enough to carry it. `translate` rather than
+   `transform` so it composes with the frame's own scale instead of replacing
+   it. `both` is correct here and only here: the held value is a few pixels of
+   offset, not an opacity that could strand the content invisible. */
+@keyframes parallax-drift {
+  from {
+    translate: 0 var(--parallax, 0.875rem);
+  }
+  to {
+    translate: 0 calc(var(--parallax, 0.875rem) * -1);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-parallax] {
+      animation: parallax-drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
+
+/* Cross-page continuity. The project thumbnail is named per project, so the
+   card the visitor clicked morphs into the detail image instead of the two
+   pages cross-fading past each other. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 300ms;
+  animation-timing-function: var(--ease-reveal);
+}
+
+::view-transition-group(*) {
+  animation-duration: 420ms;
+  animation-timing-function: var(--ease-reveal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-parallax],
+  [data-scroll-progress] {
+    animation: none !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

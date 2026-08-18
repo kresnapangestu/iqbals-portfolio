@@ -94,7 +94,7 @@ export const id: Dictionary = {
     },
     present: "Sekarang",
     technologiesAt: (company) => `Teknologi yang digunakan di ${company}`,
-    viewResume: "Lihat CV lengkap →",
+    viewResume: "Lihat CV lengkap",
     duration: {
       lessThanMonth: "kurang dari sebulan",
       // Indonesian nouns do not inflect for number, so the count carries it all.
@@ -107,8 +107,8 @@ export const id: Dictionary = {
   projects: {
     heading: "Karya pilihan",
     empty: "Karya pilihan sedang diperbarui.",
-    seeMore: "Lihat karya lainnya →",
-    viewProject: "Lihat proyek →",
+    seeMore: "Lihat karya lainnya",
+    viewProject: "Lihat proyek",
     technologiesIn: (project) => `Teknologi yang digunakan pada ${project}`,
   },
 
