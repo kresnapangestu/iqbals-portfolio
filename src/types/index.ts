@@ -32,6 +32,8 @@ export interface Project {
   /** Product name. A proper noun — not translated. */
   readonly name: string;
   readonly imageSrc: string;
+  /** `cover` (default) crops to fill; `contain` shows the whole screenshot uncropped. */
+  readonly fit?: "cover" | "contain";
   readonly technologies: readonly string[];
   /** Live site or case study. Absent when the work is not publicly viewable. */
   readonly url?: string;

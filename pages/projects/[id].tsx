@@ -6,8 +6,11 @@ import type {
 import Head from "next/head";
 import Link from "next/link";
 
+import { useState } from "react";
+
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { ImageLightbox } from "@/components/ui/ImageLightbox";
 import { ImageWithFallback } from "@/components/ui/ImageWithFallback";
 import { LocaleFade } from "@/components/ui/LocaleFade";
 import { TagList } from "@/components/ui/Tag";
@@ -21,7 +24,6 @@ import { siteConfig } from "@/data/site";
 import { useReveal } from "@/hooks/useReveal";
 import { projectCopy } from "@/i18n";
 import { useTranslation } from "@/i18n/LocaleProvider";
-import { cn } from "@/lib/cn";
 import { buildProjectSchema } from "@/lib/schema";
 import { isSafeExternalUrl } from "@/lib/url";
 import { projectImageTransition } from "@/lib/viewTransition";
@@ -98,8 +100,13 @@ export default function ProjectDetailPage({
   const t = useTranslation();
   const copy = projectCopy(t, project.id);
   const detailsRef = useReveal<HTMLDivElement>();
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   const images = [project.imageSrc, ...(project.gallery ?? [])];
+  const lightboxImages = images.map((src, index) => ({
+    src,
+    alt: t.projectDetail.screenshotAlt(project.name, index + 1),
+  }));
   const hasLiveUrl = isSafeExternalUrl(project.url);
   const attribution = [project.company, copy.role].filter(Boolean).join(" · ");
 
@@ -253,12 +260,14 @@ export default function ProjectDetailPage({
                 Second in DOM so the project name leads on a narrow screen; the
                 explicit grid placement keeps it on the left at `lg`. */}
             <div className="lg:col-start-1 lg:row-start-1">
-              <div
-                className={cn("grid gap-3", images.length > 1 && "sm:grid-cols-2")}
-              >
+              {/* Vertical stack — each screenshot reads top to bottom at full
+                  width rather than competing for space in a side-by-side grid. */}
+              <div className="grid gap-3">
                 {images.map((src, index) => (
-                  <div
+                  <button
                     key={src}
+                    type="button"
+                    onClick={() => setLightboxIndex(index)}
                     // The lead image is the other half of the card's named
                     // pair: it is what the thumbnail becomes on arrival.
                     style={
@@ -266,12 +275,7 @@ export default function ProjectDetailPage({
                         ? projectImageTransition(project.id)
                         : undefined
                     }
-                    className={cn(
-                      // Screenshots float inside a padded tile rather than
-                      // filling it, so nothing in the captured UI is cropped away.
-                      "relative overflow-hidden rounded-card bg-surface-raised p-4 sm:p-6",
-                      images.length === 1 ? "aspect-[16/10]" : "aspect-[4/3]",
-                    )}
+                    className="group relative aspect-[16/10] overflow-hidden rounded-card bg-surface-raised p-4 text-left transition-[box-shadow] duration-200 ease-smooth hover:shadow-lift focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-ink focus-visible:ring-offset-2 sm:p-6"
                   >
                     <ImageWithFallback
                       src={src}
@@ -283,7 +287,26 @@ export default function ProjectDetailPage({
                       priority={index === 0}
                       fit="contain"
                     />
-                  </div>
+                    <span className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors duration-200 ease-smooth group-hover:bg-ink/10 group-focus-visible:bg-ink/10">
+                      <span className="grid h-11 w-11 place-items-center rounded-full bg-white/90 opacity-0 shadow-lift transition-opacity duration-200 ease-smooth group-hover:opacity-100 group-focus-visible:opacity-100">
+                        <svg
+                          viewBox="0 0 24 24"
+                          width="18"
+                          height="18"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.75"
+                          strokeLinecap="round"
+                          aria-hidden
+                          className="text-ink"
+                        >
+                          <circle cx="11" cy="11" r="6.5" />
+                          <path d="M20 20l-4-4" />
+                          <path d="M11 8.5v5M8.5 11h5" />
+                        </svg>
+                      </span>
+                    </span>
+                  </button>
                 ))}
               </div>
 
@@ -356,6 +379,15 @@ export default function ProjectDetailPage({
 
         <Footer />
       </LocaleFade>
+
+      {lightboxIndex !== null && (
+        <ImageLightbox
+          images={lightboxImages}
+          index={lightboxIndex}
+          onIndexChange={setLightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+        />
+      )}
     </>
   );
 }

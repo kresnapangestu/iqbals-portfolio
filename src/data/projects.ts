@@ -12,20 +12,14 @@ import type { Project } from "@/types";
  */
 const entries = [
   {
-    id: "sentinel",
-    name: "Sentinel",
-    imageSrc: "/images/sentinel_login.webp",
-    technologies: [
-      "Next.js",
-      "Tailwind CSS",
-      "ECharts",
-      "NestJS",
-      "Prisma",
-      "PostgreSQL",
-      "FastAPI",
-      "scikit-learn",
-    ],
-    // Not publicly deployed, so no `url`.
+    id: "artemis",
+    name: "Artemis AI Studio",
+    imageSrc: "/images/artemis_studio.webp",
+    // Full UI in one screenshot, not a decorative crop — show the whole thing.
+    fit: "contain",
+    gallery: ["/images/artemis_login.webp"],
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    // Self-hosted, frontend-only — not publicly deployed, so no `url`.
   },
   {
     id: "next_pmt_cmt",

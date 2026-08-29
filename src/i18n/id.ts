@@ -141,6 +141,13 @@ export const id: Dictionary = {
     previewUnavailable: "Pratinjau tidak tersedia",
   },
 
+  lightbox: {
+    close: "Tutup",
+    previous: "Gambar sebelumnya",
+    next: "Gambar berikutnya",
+    counter: (current: number, total: number) => `${current} dari ${total}`,
+  },
+
   notFound: {
     title: "Halaman tidak ditemukan",
     heading: "Halaman ini tidak ada.",
@@ -196,15 +203,13 @@ export const id: Dictionary = {
     },
 
     projects: {
-      sentinel: {
+      artemis: {
         summary:
-          "Sistem pemantauan KPI telekomunikasi yang menandai anomali pada deret waktu jaringan, dibangun sebagai penelitian skripsi: Z-Score untuk deteksi univariat dan Isolation Forest untuk multivariat.",
+          "Ruang kerja chat AI self-hosted untuk tim teknis internal: ganti model, persona tersimpan, lampiran file, dan parameter generasi, dibangun di depan lapisan penyedia AI yang bisa ditukar, bukan vendor pihak ketiga.",
         contribution:
-          "Membangun keseluruhan sistem: dashboard Next.js, gateway NestJS yang memegang akses basis data, dan layanan FastAPI yang memuat algoritma deteksinya.",
-        role: "Full-stack Developer",
-        year: "2025 – 2026",
-        problem:
-          "Penurunan KPI jaringan tersembunyi di antara ribuan titik deret waktu, dan menelaah grafiknya satu per satu membuatnya baru ketahuan terlambat — kalau sempat ketahuan sama sekali.",
+          "Membangun seluruh frontend sendirian: antarmuka chat, manajemen percakapan, sistem model dan persona, serta pengaturan, memakai Next.js App Router dengan arsitektur komponen Atomic Design.",
+        role: "Front-end Developer",
+        year: "2026 – Sekarang",
       },
       next_pmt_cmt: {
         summary:
@@ -243,7 +248,7 @@ export const id: Dictionary = {
         summary:
           "Sistem pengelolaan pendanaan untuk BPDLH (Badan Pengelola Dana Lingkungan Hidup): pemangku kepentingan mengajukan permohonan dana di satu sisi, tim verifikator menelaahnya di sisi lain.",
         contribution:
-          "Membangun aplikasi React untuk sisi pemohon sekaligus back-office — Identity Server untuk masuk, React Hook Form untuk formulir pengajuan, Redux untuk state penelaahan.",
+          "Membangun aplikasi React untuk sisi pemohon sekaligus back-office: Identity Server untuk masuk, React Hook Form untuk formulir pengajuan, Redux untuk state penelaahan.",
         role: "Front-end Developer",
         year: "2023 – 2024",
         problem:

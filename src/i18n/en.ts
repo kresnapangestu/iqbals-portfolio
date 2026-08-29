@@ -155,6 +155,13 @@ export const en = {
     previewUnavailable: "Preview unavailable",
   },
 
+  lightbox: {
+    close: "Close",
+    previous: "Previous image",
+    next: "Next image",
+    counter: (current: number, total: number) => `${current} of ${total}`,
+  },
+
   notFound: {
     title: "Page not found",
     heading: "This page doesn’t exist.",
@@ -210,15 +217,13 @@ export const en = {
     } satisfies Record<ExperienceId, ExperienceCopy>,
 
     projects: {
-      sentinel: {
+      artemis: {
         summary:
-          "A telecom KPI monitoring system that flags anomalies in network time series, built as thesis research: Z-Score for univariate detection and Isolation Forest for multivariate.",
+          "A self-hosted AI chat workspace for internal technical teams: model switching, saved personas, file attachments, and generation parameters, built in front of a swappable AI provider layer instead of a third-party vendor.",
         contribution:
-          "Built the whole system: the Next.js dashboard, the NestJS gateway that owns database access, and the FastAPI service holding the detection algorithms.",
-        role: "Full-stack Developer",
-        year: "2025 – 2026",
-        problem:
-          "Network KPI degradation hides in thousands of time-series points, and reviewing charts by hand catches it late — if at all.",
+          "Built the entire frontend solo: the chat interface, conversation management, model and persona system, and settings, with Next.js App Router and an Atomic Design component architecture.",
+        role: "Front-end Developer",
+        year: "2026 – Present",
       },
       next_pmt_cmt: {
         summary:
@@ -257,7 +262,7 @@ export const en = {
         summary:
           "A funding management system for BPDLH, the Indonesia Environment Fund: stakeholders file funding requests on one side, reviewers verify them on the other.",
         contribution:
-          "Built both the applicant-facing and back-office React applications — Identity Server for sign-in, React Hook Form for the submission forms, Redux for review state.",
+          "Built both the applicant-facing and back-office React applications: Identity Server for sign-in, React Hook Form for the submission forms, Redux for review state.",
         role: "Front-end Developer",
         year: "2023 – 2024",
         problem:

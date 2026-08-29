@@ -32,6 +32,7 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
           alt={t.meta.interfaceAlt(project.name)}
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
           priority={priority}
+          fit={project.fit}
           className="transition-transform duration-500 ease-smooth group-hover:scale-[1.03] motion-reduce:transition-none"
         />
       </div>
