@@ -44,6 +44,13 @@ export interface Project {
    * full-bleed tile to a grid as more are supplied.
    */
   readonly gallery?: readonly string[];
+  /**
+   * Width hint per `gallery` image (index-aligned with `gallery`, not
+   * `imageSrc` — that one is always a full-width row). Omit for every image
+   * full width, the default single-column stack. `"half"` pairs with its
+   * neighbours two-up at `sm` and above; still full width below that.
+   */
+  readonly galleryLayout?: readonly ("full" | "half")[];
 }
 
 export interface NavigationItem {

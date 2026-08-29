@@ -14,10 +14,16 @@ const entries = [
   {
     id: "artemis",
     name: "Artemis AI Studio",
-    imageSrc: "/images/artemis_studio.webp",
-    // Full UI in one screenshot, not a decorative crop — show the whole thing.
+    imageSrc: "/images/artemis_brand.webp",
+    // Full UI/brand asset in one image, not a decorative crop — show the whole thing.
     fit: "contain",
-    gallery: ["/images/artemis_login.webp"],
+    gallery: [
+      "/images/artemis_brand_icon.webp",
+      "/images/artemis_brand_wordmark.webp",
+      "/images/artemis_login.webp",
+      "/images/artemis_studio.webp",
+    ],
+    galleryLayout: ["half", "half", "full", "full"],
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     // Self-hosted, frontend-only — not publicly deployed, so no `url`.
   },
